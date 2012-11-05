@@ -19,6 +19,21 @@ namespace BusinessManager.ViewModels
 {
 	public class StudentDetailViewModel : DetailViewModel
 	{
+		BusinessManagerEntities context;
+
+		BusinessManagerEntities Context
+		{
+			get
+			{
+				if (context == null)
+				{
+					context = Container.Current.Resolve<BusinessManagerEntities>();
+				}
+
+				return context;
+			}
+		}
+		
 		Student student;
 		
 		public Student Student 
@@ -27,14 +42,13 @@ namespace BusinessManager.ViewModels
 			{
 				if (student == null)
 				{
-					if (Id == null)
+					if (Id == Guid.Empty)
 					{
 						student = new Student();
 					}
 					else
 					{
-						var context = Container.Current.Resolve<BusinessManagerEntities>();
-						var db = context.Students;
+						var db = Context.Students;
 						var q = from s in db
 								where s.Id == Id
 								select s;
@@ -67,19 +81,13 @@ namespace BusinessManager.ViewModels
 			{
 				return new RelayCommand(_ =>
 				{
-					var context = Container.Current.Resolve<BusinessManagerEntities>();
-
-					if (Student.Id == null)
+					if (Student.Id == Guid.Empty)
 					{
 						Student.Id = Guid.NewGuid();
-						context.Students.Add(Student);
-					}
-					else
-					{
-						context.Students.Attach(Student);
+						Context.Students.Add(Student);
 					}
 
-					context.SaveChanges();
+					Context.SaveChanges();
 				});
 			}
 		}

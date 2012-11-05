@@ -76,5 +76,19 @@ namespace BusinessManager.ViewModels
 				});
 			}
 		}
+
+		public ICommand StudentAddCommand
+		{
+			get
+			{
+				return new RelayCommand(s =>
+				{
+					var view = Container.Current.Resolve<IView>("StudentDetailView");
+					var vm = (DetailViewModel)Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
+
+					Navigation.Show(view, vm);
+				});
+			}
+		}
 	}
 }
