@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OdysseyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OdysseyEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="RefCountries" EntityType="OdysseyModel.RefCountry" />
+    <EntitySet Name="RefUNLOCOes" EntityType="OdysseyModel.RefUNLOCO" />
+  </EntityContainer>
+  <EntityType Name="RefCountry">
+    <Key>
+      <PropertyRef Name="RN_PK" />
+    </Key>
+    <Property Name="RN_PK" Type="Guid" Nullable="false" />
+    <Property Name="RN_Code" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+    <Property Name="RN_IsActive" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RN_IsSystem" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RN_Desc" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="RN_EconomicGrouping" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="RN_CountryDialingCode" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="RN_AddressFormattingRule" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="RN_PostcodeValidationRule" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="RN_StateProvinceValidationRule" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="RN_RX_NKLocalCurrency" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="RN_IsoAlpha3Code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+    <Property Name="RN_IsoNumericUNM49Code" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="RefUNLOCO">
+    <Key>
+      <PropertyRef Name="RL_PK" />
+    </Key>
+    <Property Name="RL_PK" Type="Guid" Nullable="false" />
+    <Property Name="RL_Code" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+    <Property Name="RL_IsActive" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_IsSystem" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_PortName" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="RL_NameWithDiacriticals" Type="String" Nullable="false" MaxLength="35" Unicode="true" FixedLength="false" />
+    <Property Name="RL_IATA" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+    <Property Name="RL_CoOrdinates" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="RL_HasAirport" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasSeaport" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasRail" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasRoad" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasPost" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasCustomsLodge" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasUnload" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasStore" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasTerminal" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasDischarge" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasOutport" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_HasBorderCrossing" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="RL_R3" Type="Guid" />
+    <Property Name="RL_RW" Type="Guid" />
+    <Property Name="RL_RN_NKCountryCode" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="RL_IsUpdatable" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+  </EntityType>
+</Schema>

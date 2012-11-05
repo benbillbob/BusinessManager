@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OdysseyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="OdysseyModelStoreContainer">
+    <EntitySet Name="RefCountry" EntityType="OdysseyModel.Store.RefCountry" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RefUNLOCO" EntityType="OdysseyModel.Store.RefUNLOCO" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="RefCountry">
+    <Key>
+      <PropertyRef Name="RN_PK" />
+    </Key>
+    <Property Name="RN_PK" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RN_Code" Type="char" Nullable="false" MaxLength="2" />
+    <Property Name="RN_IsActive" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RN_IsSystem" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RN_Desc" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="RN_EconomicGrouping" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="RN_CountryDialingCode" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="RN_AddressFormattingRule" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="RN_PostcodeValidationRule" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="RN_StateProvinceValidationRule" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="RN_RX_NKLocalCurrency" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="RN_IsoAlpha3Code" Type="char" Nullable="false" MaxLength="3" />
+    <Property Name="RN_IsoNumericUNM49Code" Type="char" Nullable="false" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="RefUNLOCO">
+    <Key>
+      <PropertyRef Name="RL_PK" />
+    </Key>
+    <Property Name="RL_PK" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RL_Code" Type="char" Nullable="false" MaxLength="5" />
+    <Property Name="RL_IsActive" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_IsSystem" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_PortName" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="RL_NameWithDiacriticals" Type="nvarchar" Nullable="false" MaxLength="35" />
+    <Property Name="RL_IATA" Type="char" Nullable="false" MaxLength="3" />
+    <Property Name="RL_CoOrdinates" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="RL_HasAirport" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasSeaport" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasRail" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasRoad" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasPost" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasCustomsLodge" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasUnload" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasStore" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasTerminal" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasDischarge" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasOutport" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_HasBorderCrossing" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="RL_R3" Type="uniqueidentifier" />
+    <Property Name="RL_RW" Type="uniqueidentifier" />
+    <Property Name="RL_RN_NKCountryCode" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="RL_IsUpdatable" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+</Schema>
