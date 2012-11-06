@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-c:\aaa\BusinessManager\BusinessManager\obj\Debug\
+C:\projects\BusinessManager\BusinessManager\obj\Debug\
 BusinessManager
 none
 false
 DEBUG;TRACE
-c:\aaa\BusinessManager\BusinessManager\App.xaml
+C:\projects\BusinessManager\BusinessManager\App.xaml
 41645201354
 11023695904
-28-2119832428
-22-287795943
+28272787508
+20-1387603858
 MainWindow.xaml;Views\StudentDetailView.xaml;Views\MainMenuView.xaml;Views\StudentListView.xaml;
 
 False
