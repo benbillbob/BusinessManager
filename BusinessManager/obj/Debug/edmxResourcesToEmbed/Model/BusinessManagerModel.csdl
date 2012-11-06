@@ -7,6 +7,7 @@
       <End Role="Choir" EntitySet="Choirs" />
       <End Role="Student" EntitySet="Students" />
     </AssociationSet>
+    <EntitySet Name="Controls" EntityType="BusinessManager.Model.Control" />
   </EntityContainer>
   <EntityType Name="Choir">
     <Key>
@@ -37,4 +38,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Control">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" />
+  </EntityType>
 </Schema>

@@ -27,5 +27,6 @@ namespace BusinessManager.Model
     
         public DbSet<Choir> Choirs { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Control> Controls { get; set; }
     }
 }

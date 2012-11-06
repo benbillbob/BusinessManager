@@ -7,6 +7,7 @@
     <Schema Namespace="BusinessManager.Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BusinessManagerModelStoreContainer">
           <EntitySet Name="Choir" EntityType="BusinessManager.Model.Store.Choir" store:Type="Tables" />
+          <EntitySet Name="Control" EntityType="BusinessManager.Model.Store.Control" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="BusinessManager.Model.Store.Student" store:Type="Tables" />
           <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.Store.StudentChoir">
             <End Role="Choir" EntitySet="Choir" />
@@ -19,6 +20,12 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Control">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -51,6 +58,7 @@
             <End Role="Choir" EntitySet="Choirs" />
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
+          <EntitySet Name="Controls" EntityType="BusinessManager.Model.Control" />
         </EntityContainer>
         <EntityType Name="Choir">
           <Key>
@@ -81,6 +89,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Control">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -100,6 +114,13 @@
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="ChoirId" ColumnName="ChoirId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Controls">
+            <EntityTypeMapping TypeName="BusinessManager.Model.Control">
+              <MappingFragment StoreEntitySet="Control">
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

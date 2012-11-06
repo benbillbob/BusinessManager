@@ -110,6 +110,10 @@
     <Compile Include="Model\Choir.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Control.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DemoData.cs" />
     <Compile Include="Model\Student.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
@@ -201,7 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BusinessManager.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

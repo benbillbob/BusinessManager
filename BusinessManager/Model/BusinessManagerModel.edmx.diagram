@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="BusinessManager.Model.Choir" Width="1.5" PointX="10.420224738502981" PointY="18.422177382941442" />
         <EntityTypeShape EntityType="BusinessManager.Model.Student" Width="1.5" PointX="7.8949977550166652" PointY="15.345350406759117" />
         <AssociationConnector Association="BusinessManager.Model.StudentChoir" />
+        <EntityTypeShape EntityType="BusinessManager.Model.Control" Width="1.5" PointX="7.2498413712018355" PointY="0.71608996424641924" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

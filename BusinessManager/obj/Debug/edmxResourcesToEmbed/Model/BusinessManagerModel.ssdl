@@ -2,6 +2,7 @@
 <Schema Namespace="BusinessManager.Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BusinessManagerModelStoreContainer">
     <EntitySet Name="Choir" EntityType="BusinessManager.Model.Store.Choir" store:Type="Tables" />
+    <EntitySet Name="Control" EntityType="BusinessManager.Model.Store.Control" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="BusinessManager.Model.Store.Student" store:Type="Tables" />
     <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.Store.StudentChoir">
       <End Role="Choir" EntitySet="Choir" />
@@ -14,6 +15,12 @@
     </Key>
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Control">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Student">
     <Key>

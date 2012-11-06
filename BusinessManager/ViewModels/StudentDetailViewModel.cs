@@ -59,10 +59,6 @@ namespace BusinessManager.ViewModels
 
 				return student;
 			}
-            set
-            {
-                student = value;
-            }
 		}
 
 		List<Choir> choirs;
