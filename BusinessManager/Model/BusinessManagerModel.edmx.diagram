@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a348d88e710e415597a15afab0d69e25" Name="Diagram1">
-        <EntityTypeShape EntityType="BusinessManager.Model.Student" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BusinessManager.Model.Choir" Width="1.5" PointX="10.420224738502981" PointY="18.422177382941442" />
+        <EntityTypeShape EntityType="BusinessManager.Model.Student" Width="1.5" PointX="7.8949977550166652" PointY="15.345350406759117" />
+        <AssociationConnector Association="BusinessManager.Model.StudentChoir" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,13 +14,15 @@
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<Button Grid.Row="3" Grid.Column="2" Command="{Binding StudentListCommand}">StudentList</Button>
-		<Button Grid.Row="2" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
+		<Button Grid.Row="4" Grid.Column="2" Command="{Binding StudentListCommand}">StudentList</Button>
+		<Button Grid.Row="3" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
 		<Label Grid.Row="0" Grid.Column="0">FirstName: </Label>
 		<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.FirstName}"></TextBox>
+		<ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Choirs}" DisplayMemberPath="{Binding Name}" SelectedValuePath="{Binding Id}" SelectedItem="{Binding ChoirId}"/>
 	</Grid>
 </UserControl>

@@ -24,8 +24,6 @@ c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.ServiceLoca
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.Unity.xml
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\BusinessManager.sdf
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\Model\BusinessManager.sdf
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\BusinessManager_Content.g.cs
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Expression.Interactions.dll
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\System.Windows.Interactivity.dll
@@ -42,3 +40,4 @@ c:\aaa\BusinessManager\BusinessManager\bin\Debug\zh-Hans\Microsoft.Expression.In
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\zh-Hant\Microsoft.Expression.Interactions.resources.dll
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\StudentDetailView.baml
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\StudentDetailView.g.cs
+c:\aaa\BusinessManager\BusinessManager\bin\Debug\BusinessManager.sdf

@@ -1,0 +1,81 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 11/06/2012 15:45:34
+-- Generated from EDMX file: c:\aaa\BusinessManager\BusinessManager\Model\BusinessManagerModel.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [Choir];
+GO
+    DROP TABLE [Student];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Students'
+CREATE TABLE [Students] (
+    [Id] uniqueidentifier  NOT NULL,
+    [FirstName] nvarchar(100)  NULL,
+    [ChoirId] uniqueidentifier  NOT NULL
+);
+GO
+
+-- Creating table 'Choirs'
+CREATE TABLE [Choirs] (
+    [Id] uniqueidentifier  NOT NULL,
+    [Name] nvarchar(100)  NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'Students'
+ALTER TABLE [Students]
+ADD CONSTRAINT [PK_Students]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Choirs'
+ALTER TABLE [Choirs]
+ADD CONSTRAINT [PK_Choirs]
+    PRIMARY KEY ([Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [ChoirId] in table 'Students'
+ALTER TABLE [Students]
+ADD CONSTRAINT [FK_StudentChoir]
+    FOREIGN KEY ([ChoirId])
+    REFERENCES [Choirs]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_StudentChoir'
+CREATE INDEX [IX_FK_StudentChoir]
+ON [Students]
+    ([ChoirId]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------

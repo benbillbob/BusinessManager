@@ -25,6 +25,7 @@ namespace BusinessManager.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Choir> Choirs { get; set; }
         public DbSet<Student> Students { get; set; }
     }
 }

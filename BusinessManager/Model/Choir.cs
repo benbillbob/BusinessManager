@@ -12,12 +12,16 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Choir
     {
-        public System.Guid Id { get; set; }
-        public string FirstName { get; set; }
-        public Nullable<System.Guid> ChoirId { get; set; }
+        public Choir()
+        {
+            this.Students = new HashSet<Student>();
+        }
     
-        public virtual Choir Choir { get; set; }
+        public System.Guid Id { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

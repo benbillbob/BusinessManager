@@ -33,12 +33,18 @@ namespace BusinessManager
 			Container.Current.RegisterType(typeof(IViewModel), typeof(MainMenuViewModel), "MainMenuViewModel");
 			Container.Current.RegisterType(typeof(BusinessManagerEntities), typeof(BusinessManagerEntities));
 
-			//var context = Container.Current.Resolve<BusinessManagerEntities>();
-			//var s = new Student();
-			//s.Id = Guid.NewGuid();
-			//s.FirstName = "Ben";
-			//context.Students.Add(s);
-			//context.SaveChanges();
+			var context = Container.Current.Resolve<BusinessManagerEntities>();
+			var s = new Student();
+			s.Id = Guid.NewGuid();
+			s.FirstName = "Ben";
+			context.Students.Add(s);
+
+			var c = new Choir();
+			c.Id = Guid.NewGuid();
+			c.Name = "ChoirA";
+			context.Choirs.Add(c);
+
+			context.SaveChanges();
 
 			var view = Container.Current.Resolve<IView>("MainMenuView");
 			var vm = Container.Current.Resolve<IViewModel>("MainMenuViewModel");

@@ -109,6 +109,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessManagerModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Choir.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Student.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
@@ -179,6 +182,7 @@
     <None Include="Model\BusinessManagerModel.edmx.diagram">
       <DependentUpon>BusinessManagerModel.edmx</DependentUpon>
     </None>
+    <None Include="Model\BusinessManagerModel.edmx.sqlce" />
     <None Include="Model\BusinessManagerModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BusinessManagerModel.edmx</DependentUpon>
@@ -200,9 +204,6 @@
   <ItemGroup>
     <Content Include="BusinessManager.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Model\BusinessManager.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

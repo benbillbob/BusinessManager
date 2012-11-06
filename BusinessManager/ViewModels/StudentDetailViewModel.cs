@@ -61,6 +61,24 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
+		List<Choir> choirs;
+
+		public List<Choir> Choirs
+		{
+			get 
+			{
+				if (choirs == null)
+				{
+					var q = from c in Context.Choirs
+							select c;
+
+					choirs = q.ToList();
+				}
+
+				return choirs; 
+			}
+		}
+
 		public ICommand StudentListCommand
 		{
 			get

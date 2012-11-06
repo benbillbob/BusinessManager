@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("businessmanager.sdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/businessmanager.sdf")]
 
 

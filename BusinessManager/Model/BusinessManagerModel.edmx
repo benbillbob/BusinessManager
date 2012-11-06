@@ -6,46 +6,106 @@
     <edmx:StorageModels>
     <Schema Namespace="BusinessManager.Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BusinessManagerModelStoreContainer">
+          <EntitySet Name="Choir" EntityType="BusinessManager.Model.Store.Choir" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="BusinessManager.Model.Store.Student" store:Type="Tables" />
+          <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.Store.StudentChoir">
+            <End Role="Choir" EntitySet="Choir" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Choir">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChoirId" Type="uniqueidentifier" />
         </EntityType>
+        <Association Name="StudentChoir">
+          <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
+          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Choir">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ChoirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BusinessManager.Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BusinessManagerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Choirs" EntityType="BusinessManager.Model.Choir" />
           <EntitySet Name="Students" EntityType="BusinessManager.Model.Student" />
+          <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.StudentChoir">
+            <End Role="Choir" EntitySet="Choirs" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Choir">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Students" Relationship="BusinessManager.Model.StudentChoir" FromRole="Choir" ToRole="Student" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ChoirId" />
+          <NavigationProperty Name="Choir" Relationship="BusinessManager.Model.StudentChoir" FromRole="Student" ToRole="Choir" />
         </EntityType>
+        <Association Name="StudentChoir">
+          <End Type="BusinessManager.Model.Choir" Role="Choir" Multiplicity="0..1" />
+          <End Type="BusinessManager.Model.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Choir">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ChoirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BusinessManagerModelStoreContainer" CdmEntityContainer="BusinessManagerEntities">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BusinessManagerModelStoreContainer" CdmEntityContainer="BusinessManagerEntities">
+          <EntitySetMapping Name="Choirs">
+            <EntityTypeMapping TypeName="BusinessManager.Model.Choir">
+              <MappingFragment StoreEntitySet="Choir">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="BusinessManager.Model.Student">
               <MappingFragment StoreEntitySet="Student">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChoirId" ColumnName="ChoirId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
