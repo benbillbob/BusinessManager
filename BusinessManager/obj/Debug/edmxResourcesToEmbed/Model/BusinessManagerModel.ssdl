@@ -3,7 +3,12 @@
   <EntityContainer Name="BusinessManagerModelStoreContainer">
     <EntitySet Name="Choir" EntityType="BusinessManager.Model.Store.Choir" store:Type="Tables" />
     <EntitySet Name="Control" EntityType="BusinessManager.Model.Store.Control" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="BusinessManager.Model.Store.Payments" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="BusinessManager.Model.Store.Student" store:Type="Tables" />
+    <AssociationSet Name="PaymentStudent" Association="BusinessManager.Model.Store.PaymentStudent">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
     <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.Store.StudentChoir">
       <End Role="Choir" EntitySet="Choir" />
       <End Role="Student" EntitySet="Student" />
@@ -22,6 +27,14 @@
     </Key>
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="StudentId" Type="uniqueidentifier" />
+    <Property Name="Amount" Type="money" />
+  </EntityType>
   <EntityType Name="Student">
     <Key>
       <PropertyRef Name="Id" />
@@ -30,6 +43,18 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
     <Property Name="ChoirId" Type="uniqueidentifier" />
   </EntityType>
+  <Association Name="PaymentStudent">
+    <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" />
+    <End Role="Payments" Type="BusinessManager.Model.Store.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="StudentChoir">
     <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
     <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="*" />

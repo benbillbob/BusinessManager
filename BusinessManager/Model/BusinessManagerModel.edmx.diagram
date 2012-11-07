@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="BusinessManager.Model.Student" Width="1.5" PointX="7.8949977550166652" PointY="15.345350406759117" />
         <AssociationConnector Association="BusinessManager.Model.StudentChoir" />
         <EntityTypeShape EntityType="BusinessManager.Model.Control" Width="1.5" PointX="7.2498413712018355" PointY="0.71608996424641924" />
+        <EntityTypeShape EntityType="BusinessManager.Model.Payment" Width="1.5" PointX="5.6094040580137658" PointY="30.999089359771038" />
+        <AssociationConnector Association="BusinessManager.Model.PaymentStudent" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

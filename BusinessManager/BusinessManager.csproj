@@ -114,12 +114,23 @@
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DemoData.cs" />
+    <Compile Include="Model\Payment.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Student.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ChoirDetailViewModel.cs" />
+    <Compile Include="ViewModels\ChoirListViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Views\ChoirDetailView.xaml.cs">
+      <DependentUpon>ChoirDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChoirListView.xaml.cs">
+      <DependentUpon>ChoirListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentDetailView.xaml.cs">
       <DependentUpon>StudentDetailView.xaml</DependentUpon>
     </Compile>
@@ -141,6 +152,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ChoirDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChoirListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\StudentDetailView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

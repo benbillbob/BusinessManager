@@ -71,3 +71,7 @@ C:\projects\BusinessManager\BusinessManager\obj\Debug\BusinessManager_MarkupComp
 C:\projects\BusinessManager\BusinessManager\obj\Debug\BusinessManager.g.resources
 C:\projects\BusinessManager\BusinessManager\obj\Debug\BusinessManager.Properties.Resources.resources
 C:\projects\BusinessManager\BusinessManager\obj\Debug\BusinessManager.csproj.GenerateResource.Cache
+C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.baml
+C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.baml
+C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.g.cs
+C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.g.cs

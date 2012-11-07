@@ -53,14 +53,6 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-		public SelectionChangedEventHandler SelectionChanged
-		{
-			get
-			{
-				return new SelectionChangedEventHandler((s, e) => { MessageBox.Show(((Student)e.AddedItems[0]).FirstName); });
-			}
-		}
-
 		public ICommand StudentSelectedCommand
 		{
 			get
