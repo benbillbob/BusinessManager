@@ -17,17 +17,17 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class StudentDetailViewModel : DetailViewModel
+	public class StudentDetailViewModel : IDetailViewModel
 	{
-		BusinessManagerEntities context;
+		IBusinessManagerEntities context;
 
-		BusinessManagerEntities Context
+		IBusinessManagerEntities Context
 		{
 			get
 			{
 				if (context == null)
 				{
-					context = Container.Current.Resolve<BusinessManagerEntities>();
+					context = Container.Current.Resolve<IBusinessManagerEntities>();
 				}
 
 				return context;
@@ -42,19 +42,7 @@ namespace BusinessManager.ViewModels
 			{
 				if (student == null)
 				{
-					if (Id == Guid.Empty)
-					{
-						student = new Student();
-					}
-					else
-					{
-						var db = Context.Students;
-						var q = from s in db
-								where s.Id == Id
-								select s;
-
-						student = q.FirstOrDefault();
-					}
+					student = new Student();
 				}
 
 				return student;
@@ -69,10 +57,7 @@ namespace BusinessManager.ViewModels
 			{
 				if (choirs == null)
 				{
-					var q = from c in Context.Choirs
-							select c;
-
-					choirs = q.ToList();
+					choirs = Context.Choirs.ToList();
 				}
 
 				return choirs; 
@@ -102,11 +87,24 @@ namespace BusinessManager.ViewModels
 					if (Student.Id == Guid.Empty)
 					{
 						Student.Id = Guid.NewGuid();
-						Context.Students.Add(Student);
+						Context.AddStudent(Student);
 					}
 
 					Context.SaveChanges();
 				});
+			}
+		}
+
+		public Guid Id
+		{
+			set
+			{
+				var db = Context.Students;
+				var q = from s in db
+						where s.Id == value
+						select s;
+
+				student = q.FirstOrDefault();
 			}
 		}
 	}

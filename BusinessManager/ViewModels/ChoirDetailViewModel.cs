@@ -17,7 +17,7 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class ChoirDetailViewModel : DetailViewModel
+	public class ChoirDetailViewModel : IDetailViewModel
 	{
 		BusinessManagerEntities context;
 
@@ -42,19 +42,7 @@ namespace BusinessManager.ViewModels
 			{
                 if (choir == null)
 				{
-					if (Id == Guid.Empty)
-					{
-                        choir = new Choir();
-					}
-					else
-					{
-                        var db = Context.Choirs;
-						var q = from c in db
-								where c.Id == Id
-								select c;
-
-                        choir = q.FirstOrDefault();
-					}
+					choir = new Choir();
 				}
 
                 return choir;
@@ -89,6 +77,19 @@ namespace BusinessManager.ViewModels
 
 					Context.SaveChanges();
 				});
+			}
+		}
+
+		public Guid Id
+		{
+			set
+			{
+                var db = Context.Choirs;
+				var q = from c in db
+						where c.Id == value
+						select c;
+
+                choir = q.FirstOrDefault();
 			}
 		}
 	}

@@ -113,6 +113,7 @@
     <Compile Include="Model\Control.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\IBusinessManagerEntities.cs" />
     <Compile Include="Model\DemoData.cs" />
     <Compile Include="Model\Payment.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>

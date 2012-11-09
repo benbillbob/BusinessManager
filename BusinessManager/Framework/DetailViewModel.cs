@@ -7,8 +7,8 @@ using BusinessManager.FrameworkInterfaces;
 
 namespace BusinessManager.Framework
 {
-	public abstract class DetailViewModel : ViewModel, IViewModel
+	public interface IDetailViewModel
 	{
-		public Guid Id { get; set; }
+		Guid Id { set; }
 	}
 }

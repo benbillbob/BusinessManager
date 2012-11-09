@@ -22,13 +22,13 @@ namespace BusinessManagerTest.ViewModels
         }
 
         [Test]
-        public void Constructor()
+		public void MainMenuViewModel_Constructor()
         {
             Assert.That(vm, Is.Not.Null);
         }
 
         [Test]
-        public void StudentListCommand()
+		public void MainMenuViewModel_StudentListCommand()
         {
             var cmd = vm.StudentListCommand;
             Assert.That(cmd, Is.Not.Null);

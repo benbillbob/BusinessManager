@@ -60,9 +60,9 @@ namespace BusinessManager.ViewModels
 				return new RelayCommand(s =>
 				{
 					var view = Container.Current.Resolve<IView>("StudentDetailView");
-					var vm = (DetailViewModel)Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
+					var vm = Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
 
-					vm.Id = ((Student)s).Id;
+					((IDetailViewModel)vm).Id = ((Student)s).Id;
 
 					Navigation.Show(view, vm);
 				});
@@ -76,7 +76,7 @@ namespace BusinessManager.ViewModels
 				return new RelayCommand(s =>
 				{
 					var view = Container.Current.Resolve<IView>("StudentDetailView");
-					var vm = (DetailViewModel)Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
+					var vm = Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
 
 					Navigation.Show(view, vm);
 				});

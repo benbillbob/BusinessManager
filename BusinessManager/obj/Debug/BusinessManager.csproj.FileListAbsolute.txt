@@ -25,19 +25,6 @@ c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.ServiceLoca
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.Unity.xml
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\BusinessManager_Content.g.cs
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Expression.Interactions.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\System.Windows.Interactivity.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\Microsoft.Expression.Interactions.xml
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\System.Windows.Interactivity.xml
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\de\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\en\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\es\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\fr\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\it\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\ja\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\ko\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\zh-Hans\Microsoft.Expression.Interactions.resources.dll
-c:\aaa\BusinessManager\BusinessManager\bin\Debug\zh-Hant\Microsoft.Expression.Interactions.resources.dll
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\StudentDetailView.baml
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\StudentDetailView.g.cs
 c:\aaa\BusinessManager\BusinessManager\bin\Debug\BusinessManager.sdf
@@ -75,3 +62,7 @@ C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.baml
 C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.baml
 C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.g.cs
 C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.g.cs
+c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.baml
+c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.baml
+c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.g.cs
+c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.g.cs
