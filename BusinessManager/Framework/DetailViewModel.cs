@@ -7,7 +7,7 @@ using BusinessManager.FrameworkInterfaces;
 
 namespace BusinessManager.Framework
 {
-	public interface IDetailViewModel
+	public interface IDetailViewModel : IViewModel
 	{
 		Guid Id { set; }
 	}

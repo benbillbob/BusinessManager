@@ -24,27 +24,37 @@ namespace BusinessManager
 		{
 			base.OnStartup(e);
 
-			Container.Current.RegisterInstance<INavigation>(new GuiNavigation());
-			Container.Current.RegisterType(typeof(IView), typeof(StudentListView), "StudentListView");
-			Container.Current.RegisterType(typeof(IViewModel), typeof(StudentListViewModel), "StudentListViewModel");
-			Container.Current.RegisterType(typeof(IView), typeof(StudentDetailView), "StudentDetailView");
-			Container.Current.RegisterType(typeof(IViewModel), typeof(StudentDetailViewModel), "StudentDetailViewModel");
-            Container.Current.RegisterType(typeof(IView), typeof(ChoirListView), "ChoirListView");
-            Container.Current.RegisterType(typeof(IViewModel), typeof(ChoirListViewModel), "ChoirListViewModel");
-            Container.Current.RegisterType(typeof(IView), typeof(ChoirDetailView), "ChoirDetailView");
-            Container.Current.RegisterType(typeof(IViewModel), typeof(ChoirDetailViewModel), "ChoirDetailViewModel");
-            Container.Current.RegisterType(typeof(IView), typeof(MainMenuView), "MainMenuView");
-			Container.Current.RegisterType(typeof(IViewModel), typeof(MainMenuViewModel), "MainMenuViewModel");
-			Container.Current.RegisterType(typeof(BusinessManagerEntities), typeof(BusinessManagerEntities));
+			SetupContainer();
 
-            DemoData.InitDemoData();
+			DemoData.InitDemoData();
 
-            var view = Container.Current.Resolve<IView>("MainMenuView");
+			ShowStartupWindow();
+		}
+
+		void ShowStartupWindow()
+		{
+			var view = Container.Current.Resolve<IView>("MainMenuView");
 			var vm = Container.Current.Resolve<IViewModel>("MainMenuViewModel");
 
 			MainWindow = new MainWindow();
 			MainWindow.Show();
 			Navigation.Current.Show(view, vm);
+		}
+
+		public void SetupContainer()
+		{
+			Container.Current.RegisterInstance<INavigation>(new GuiNavigation());
+			Container.Current.RegisterType(typeof(IView), typeof(StudentListView), "StudentListView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(StudentListViewModel), "StudentListViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(StudentDetailView), "StudentDetailView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(StudentDetailViewModel), "StudentDetailViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(ChoirListView), "ChoirListView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(ChoirListViewModel), "ChoirListViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(ChoirDetailView), "ChoirDetailView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(ChoirDetailViewModel), "ChoirDetailViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(MainMenuView), "MainMenuView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(MainMenuViewModel), "MainMenuViewModel");
+			Container.Current.RegisterType(typeof(IBusinessManagerEntities), typeof(BusinessManagerEntities));
 		}
 	}
 }
