@@ -90,7 +90,7 @@ namespace BusinessManager.ViewModels
 						Context.AddStudent(Student);
 					}
 
-					Context.SaveChanges();
+					Context.Save();
 				});
 			}
 		}

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BusinessManager.Model;
 
-class DummyEntities : IBusinessManagerEntities
+public class DummyEntities : IBusinessManagerEntities
 {
 	public DummyEntities()
 	{
@@ -21,12 +21,12 @@ class DummyEntities : IBusinessManagerEntities
 	public IEnumerable<Student> Students { get { return new List<Student>() { studentA }; } }
 	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA }; } }
 
-	public int SaveChanges()
+	public virtual int Save()
 	{
 		return 0;
 	}
 
-	public void AddStudent(Student student)
+	public virtual void AddStudent(Student student)
 	{
 		((List<Student>)Students).Add(student);
 	}

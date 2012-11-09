@@ -72,16 +72,17 @@ namespace BusinessManagerTest.ViewModels
 		[Test]
 		public void StudentDetailViewModel_DoesNotCallAddStudentIfExisitingAndSaveChanges()
 		{
-			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var context = Mock.Of<DummyEntities>();
+			Container.Current.RegisterInstance<IBusinessManagerEntities>(context);
 			var testStudent = context.Students.FirstOrDefault();
+
 			vm.Id = testStudent.Id;
-
-			var contextMock = new Mock<IBusinessManagerEntities>();
-			Container.Current.RegisterInstance<IBusinessManagerEntities>(contextMock.Object);
-
+	
 			vm.SaveCommand.Execute(null);
+
+			var contextMock = Mock.Get(context);
 			contextMock.Verify(x => x.AddStudent(It.Is<Student>(s => s == vm.Student)), Times.Exactly(0), "AddStudent called");
-			contextMock.Verify(x => x.SaveChanges(), Times.Exactly(1), "SaveChanges not called");
+			contextMock.Verify(x => x.Save(), Times.Exactly(1), "Save not called");
 		}
 
 		[Test]
@@ -91,7 +92,7 @@ namespace BusinessManagerTest.ViewModels
 			Container.Current.RegisterInstance<IBusinessManagerEntities>(context.Object);
 			vm.SaveCommand.Execute(null);
 			context.Verify(x => x.AddStudent(It.Is<Student>(s => s == vm.Student)), Times.Exactly(1));
-			context.Verify(x => x.SaveChanges(), Times.Exactly(1));
+			context.Verify(x => x.Save(), Times.Exactly(1));
 		}
     }
 }

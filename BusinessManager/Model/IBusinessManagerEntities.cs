@@ -9,7 +9,7 @@ namespace BusinessManager.Model
 
 		//DbSet<Student> Students { get; }
 		//DbSet<Choir> Choirs { get; }
-		int SaveChanges();
+		int Save();
 		void AddStudent(Student student);
 	}
 
@@ -28,6 +28,11 @@ namespace BusinessManager.Model
 		IEnumerable<Choir> IBusinessManagerEntities.Choirs
 		{
 			get { return Choirs; }
+		}
+
+		public int Save()
+		{
+			return SaveChanges();
 		}
 	}
 }
