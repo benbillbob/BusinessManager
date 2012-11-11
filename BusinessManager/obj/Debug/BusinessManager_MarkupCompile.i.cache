@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\AAA\BusinessManager\BusinessManager\obj\Debug\
+C:\projects\BusinessManager\BusinessManager\obj\Debug\
 BusinessManager
 none
 false
 DEBUG;TRACE
-c:\AAA\BusinessManager\BusinessManager\App.xaml
-61699346928
+C:\projects\BusinessManager\BusinessManager\App.xaml
+7-1003441186
 11023695904
-361654435710
-201023394668
-MainWindow.xaml;Views\ChoirDetailView.xaml;Views\ChoirListView.xaml;Views\StudentDetailView.xaml;Views\MainMenuView.xaml;Views\StudentListView.xaml;
+381154362691
+20-1387603858
+MainWindow.xaml;Views\ChoirDetailView.xaml;Views\ChoirListView.xaml;Views\NavigationView.xaml;Views\StudentDetailView.xaml;Views\MainMenuView.xaml;Views\StudentListView.xaml;
 
 False
 

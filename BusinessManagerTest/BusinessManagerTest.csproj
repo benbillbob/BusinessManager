@@ -67,8 +67,11 @@
   <ItemGroup>
     <Compile Include="App_Test.cs" />
     <Compile Include="Framework\RelayCommand_Test.cs" />
+    <Compile Include="Framework\TestHelpers.cs" />
     <Compile Include="Framework\ViewModel_Test.cs" />
     <Compile Include="Model\DummyEntities.cs" />
+    <Compile Include="ViewModels\ChoirDetailViewModel_Test.cs" />
+    <Compile Include="ViewModels\StudentListViewModel_Test.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel_Test.cs" />
     <Compile Include="ViewModels\MainMenuViewModel_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,7 +20,7 @@ namespace BusinessManagerTest.Framework
 		public void ViewModel_NavigationReturnsTypeOfNavigation()
 		{
 			var t = new TestViewModel();
-			Assert.That(t.Navigation, Is.TypeOf(typeof(INavigation)));
+			Assert.That(t.Navigation, Is.TypeOf(typeof(GuiNavigation)));
 		}
 	}
 }

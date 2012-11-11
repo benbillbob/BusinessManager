@@ -12,6 +12,8 @@ using Microsoft.Practices.Unity;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Moq;
+using BusinessManager.FrameworkInterfaces;
+using BusinessManagerTest.Framework;
 
 namespace BusinessManagerTest.ViewModels
 {
@@ -32,14 +34,6 @@ namespace BusinessManagerTest.ViewModels
 		public void StudentDetailViewModel_Constructor()
         {
             Assert.That(vm, Is.Not.Null);
-        }
-
-        [Test]
-		public void StudentDetailViewModel_StudentListCommand()
-        {
-            var cmd = vm.StudentListCommand;
-            Assert.That(cmd, Is.Not.Null);
-            Assert.That(cmd, Is.TypeOf(typeof(RelayCommand)));
         }
 
 		[Test]
@@ -94,5 +88,11 @@ namespace BusinessManagerTest.ViewModels
 			context.Verify(x => x.AddStudent(It.Is<Student>(s => s == vm.Student)), Times.Exactly(1));
 			context.Verify(x => x.Save(), Times.Exactly(1));
 		}
-    }
+
+		[Test]
+		public void StudentDetailViewModel_StudentListCommand()
+		{
+			TestHelpers.NavigationTest("StudentListView", "StudentListViewModel", vm.StudentListCommand);
+		}
+	}
 }

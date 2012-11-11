@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="BusinessManager.Views.ChoirDetailView"
+﻿<UserControl x:Class="BusinessManager.Views.NavigationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,17 +10,14 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto"/>
 			<ColumnDefinition Width="*"/>
-			<ColumnDefinition Width="Auto"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-        <Button Grid.Row="3" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
-		<Label Grid.Row="0" Grid.Column="0">FirstName: </Label>
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Choir.Name}"></TextBox>
+        <Button Grid.Row="0" Grid.Column="0" Command="{Binding ChoirListCommand}">Choir List</Button>
+		<Button Grid.Row="1" Grid.Column="0" Command="{Binding StudentListCommand}">Student List</Button>
 	</Grid>
 </UserControl>

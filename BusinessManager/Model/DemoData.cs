@@ -12,7 +12,7 @@ namespace BusinessManager.Model
     {
         public static void InitDemoData()
         {
-            var context = Container.Current.Resolve<BusinessManagerEntities>();
+            var context = Container.Current.Resolve<IBusinessManagerEntities>();
             var control = (from c in context.Controls
                            select c).FirstOrDefault();
 
@@ -21,28 +21,28 @@ namespace BusinessManager.Model
                 var s = new Student();
                 s.Id = Guid.NewGuid();
                 s.FirstName = "Ben";
-                context.Students.Add(s);
+                context.AddStudent(s);
 
                 var c = new Choir();
                 c.Id = Guid.NewGuid();
                 c.Name = "ChoirA";
-                context.Choirs.Add(c);
+                context.AddChoir(c);
 
                 c = new Choir();
                 c.Id = Guid.NewGuid();
                 c.Name = "ChoirB";
-                context.Choirs.Add(c);
+                context.AddChoir(c);
 
                 c = new Choir();
                 c.Id = Guid.NewGuid();
                 c.Name = "ChoirC";
-                context.Choirs.Add(c);
+                context.AddChoir(c);
 
                 control = new Control();
                 control.Id = Guid.NewGuid();
-                context.Controls.Add(control);
+                context.AddControl(control);
 
-                context.SaveChanges();
+                context.Save();
             }
         }
     }

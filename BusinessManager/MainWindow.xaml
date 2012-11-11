@@ -1,5 +1,13 @@
 ﻿<Window x:Class="BusinessManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow">
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+		<ScrollViewer x:Name="Navigation" Grid.Column="0" Grid.Row="0"/>
+		<ScrollViewer x:Name="MainView" Grid.Column="1" Grid.Row="0"/>
+	</Grid>
 </Window>

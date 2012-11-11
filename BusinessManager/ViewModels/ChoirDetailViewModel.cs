@@ -17,17 +17,17 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class ChoirDetailViewModel : IDetailViewModel
+	public class ChoirDetailViewModel : ViewModel, IDetailViewModel
 	{
-		BusinessManagerEntities context;
+		IBusinessManagerEntities context;
 
-		BusinessManagerEntities Context
+		IBusinessManagerEntities Context
 		{
 			get
 			{
 				if (context == null)
 				{
-					context = Container.Current.Resolve<BusinessManagerEntities>();
+					context = Container.Current.Resolve<IBusinessManagerEntities>();
 				}
 
 				return context;
@@ -72,10 +72,10 @@ namespace BusinessManager.ViewModels
                     if (Choir.Id == Guid.Empty)
 					{
                         Choir.Id = Guid.NewGuid();
-                        Context.Choirs.Add(Choir);
+                        Context.AddChoir(Choir);
 					}
 
-					Context.SaveChanges();
+					Context.Save();
 				});
 			}
 		}

@@ -1,4 +1,5 @@
 ﻿using BusinessManager.Framework;
+using BusinessManager.FrameworkInterfaces;
 using BusinessManager.ViewModels;
 using NUnit.Framework;
 using System;
@@ -7,12 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Practices.Unity;
+using Moq;
+using BusinessManagerTest.Framework;
 
 namespace BusinessManagerTest.ViewModels
 {
     [TestFixture]
     public class MainMenuViewModel_Test
     {
+        public class DummyView : IView
+        {
+        }
+
+        public class DummyViewModel : IViewModel
+        {
+        }
+
         MainMenuViewModel vm;
 
         [SetUp]
@@ -30,9 +42,13 @@ namespace BusinessManagerTest.ViewModels
         [Test]
 		public void MainMenuViewModel_StudentListCommand()
         {
-            var cmd = vm.StudentListCommand;
-            Assert.That(cmd, Is.Not.Null);
-            Assert.That(cmd, Is.TypeOf(typeof(RelayCommand)));
-        }
+			TestHelpers.NavigationTest("StudentListView", "StudentListViewModel", vm.StudentListCommand);
+		}
+
+        [Test]
+        public void MainMenuViewModel_ChoirListCommand()
+        {
+			TestHelpers.NavigationTest("ChoirListView", "ChoirListViewModel", vm.ChoirListCommand);
+		}
     }
 }

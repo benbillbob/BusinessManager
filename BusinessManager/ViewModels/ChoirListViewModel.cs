@@ -27,7 +27,7 @@ namespace BusinessManager.ViewModels
 			{
                 if (choirs == null)
 				{
-					var context = Container.Current.Resolve<BusinessManagerEntities>();
+					var context = Container.Current.Resolve<IBusinessManagerEntities>();
                     var db = context.Choirs;
 					var q = from c in db
 							select c;

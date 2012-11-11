@@ -12,7 +12,7 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class MainMenuViewModel : IViewModel
+	public class MainMenuViewModel : ViewModel
 	{
 		public ICommand StudentListCommand
 		{
@@ -23,7 +23,7 @@ namespace BusinessManager.ViewModels
 					var view = Container.Current.Resolve<IView>("StudentListView");
 					var vm = Container.Current.Resolve<IViewModel>("StudentListViewModel");
 
-					Navigation.Current.Show(view, vm); 
+					Navigation.Show(view, vm); 
 				});
 			}
 		}
@@ -37,7 +37,7 @@ namespace BusinessManager.ViewModels
                     var view = Container.Current.Resolve<IView>("ChoirListView");
                     var vm = Container.Current.Resolve<IViewModel>("ChoirListViewModel");
 
-                    Navigation.Current.Show(view, vm);
+                    Navigation.Show(view, vm);
                 });
             }
         }

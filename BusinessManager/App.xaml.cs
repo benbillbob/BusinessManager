@@ -54,6 +54,8 @@ namespace BusinessManager
 			Container.Current.RegisterType(typeof(IViewModel), typeof(ChoirDetailViewModel), "ChoirDetailViewModel");
 			Container.Current.RegisterType(typeof(IView), typeof(MainMenuView), "MainMenuView");
 			Container.Current.RegisterType(typeof(IViewModel), typeof(MainMenuViewModel), "MainMenuViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(NavigationView), "NavigationView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(NavigationViewModel), "NavigationViewModel");
 			Container.Current.RegisterType(typeof(IBusinessManagerEntities), typeof(BusinessManagerEntities));
 		}
 	}

@@ -17,7 +17,7 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class StudentDetailViewModel : IDetailViewModel
+	public class StudentDetailViewModel : ViewModel, IDetailViewModel
 	{
 		IBusinessManagerEntities context;
 

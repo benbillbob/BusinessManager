@@ -20,6 +20,7 @@ public class DummyEntities : IBusinessManagerEntities
 
 	public IEnumerable<Student> Students { get { return new List<Student>() { studentA }; } }
 	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA }; } }
+	public IEnumerable<Control> Controls { get { return new List<Control>() { }; } }
 
 	public virtual int Save()
 	{
@@ -29,5 +30,15 @@ public class DummyEntities : IBusinessManagerEntities
 	public virtual void AddStudent(Student student)
 	{
 		((List<Student>)Students).Add(student);
+	}
+
+	public virtual void AddChoir(Choir choir)
+	{
+		((List<Choir>)Choirs).Add(choir);
+	}
+
+	public virtual void AddControl(Control control)
+	{
+		((List<Control>)Controls).Add(control);
 	}
 }

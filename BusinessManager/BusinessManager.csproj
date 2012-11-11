@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="ViewModels\ChoirDetailViewModel.cs" />
     <Compile Include="ViewModels\ChoirListViewModel.cs" />
+    <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
@@ -131,6 +132,9 @@
     </Compile>
     <Compile Include="Views\ChoirListView.xaml.cs">
       <DependentUpon>ChoirListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NavigationView.xaml.cs">
+      <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentDetailView.xaml.cs">
       <DependentUpon>StudentDetailView.xaml</DependentUpon>
@@ -158,6 +162,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ChoirListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NavigationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

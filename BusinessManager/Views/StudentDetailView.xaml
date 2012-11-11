@@ -19,11 +19,10 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<Button Grid.Row="4" Grid.Column="2" Command="{Binding StudentListCommand}">StudentList</Button>
-		<Button Grid.Row="3" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
+        <Button Grid.Row="3" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
 		<Label Grid.Row="0" Grid.Column="0">FirstName: </Label>
 		<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.FirstName}"></TextBox>
         <Label Grid.Row="1" Grid.Column="0">Choir:</Label>
-        <ComboBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Student.ChoirId" SelectedValue="{Binding Id, Mode=TwoWay}"/>
+		<ComboBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId}"/>
 	</Grid>
 </UserControl>

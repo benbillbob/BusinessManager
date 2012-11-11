@@ -66,3 +66,5 @@ c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.baml
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.baml
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirDetailView.g.cs
 c:\aaa\BusinessManager\BusinessManager\obj\Debug\Views\ChoirListView.g.cs
+C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\NavigationView.baml
+C:\projects\BusinessManager\BusinessManager\obj\Debug\Views\NavigationView.g.cs

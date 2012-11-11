@@ -17,24 +17,8 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class StudentListViewModel : ViewModel
+	public class NavigationViewModel : ViewModel
 	{
-		List<Student> students;
-
-		public List<Student> Students
-		{
-			get 
-			{
-				if (students == null)
-				{
-					var context = Container.Current.Resolve<IBusinessManagerEntities>();
-					students = context.Students.ToList();
-				}
-
-				return students;
-			}
-		}
-
 		public ICommand HomeCommand
 		{
 			get
@@ -49,30 +33,28 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-		public ICommand StudentSelectedCommand
+		public ICommand StudentListCommand
 		{
 			get
 			{
-				return new RelayCommand(s =>
+				return new RelayCommand(_ =>
 				{
-					var view = Container.Current.Resolve<IView>("StudentDetailView");
-					var vm = Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
-
-					((IDetailViewModel)vm).Id = ((Student)s).Id;
+					var view = Container.Current.Resolve<IView>("StudentListView");
+					var vm = Container.Current.Resolve<IViewModel>("StudentListViewModel");
 
 					Navigation.Show(view, vm);
 				});
 			}
 		}
 
-		public ICommand StudentAddCommand
+		public ICommand ChoirListCommand
 		{
 			get
 			{
-				return new RelayCommand(s =>
+				return new RelayCommand(_ =>
 				{
-					var view = Container.Current.Resolve<IView>("StudentDetailView");
-					var vm = Container.Current.Resolve<IViewModel>("StudentDetailViewModel");
+					var view = Container.Current.Resolve<IView>("ChoirListView");
+					var vm = Container.Current.Resolve<IViewModel>("ChoirListViewModel");
 
 					Navigation.Show(view, vm);
 				});
