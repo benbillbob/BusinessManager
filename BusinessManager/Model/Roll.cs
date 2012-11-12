@@ -12,20 +12,18 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Roll
     {
-        public Student()
+        public Roll()
         {
-            this.Payments = new HashSet<Payment>();
             this.StudentAttendences = new HashSet<StudentAttendence>();
         }
     
         public System.Guid Id { get; set; }
-        public string FirstName { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
         public Nullable<System.Guid> ChoirId { get; set; }
     
         public virtual Choir Choir { get; set; }
-        public virtual ICollection<Payment> Payments { get; set; }
         public virtual ICollection<StudentAttendence> StudentAttendences { get; set; }
     }
 }
