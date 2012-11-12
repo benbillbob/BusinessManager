@@ -1,3 +1,4 @@
-bin/
-obj/
+BusinessManager/bin/
+BusinessManager/obj/
 TestResults/
+BusinessManager.v11.suo
