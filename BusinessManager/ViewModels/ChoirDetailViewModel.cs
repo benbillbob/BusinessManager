@@ -49,20 +49,6 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-		public ICommand ChoirListCommand
-		{
-			get
-			{
-				return new RelayCommand(_ =>
-				{
-                    var view = Container.Current.Resolve<IView>("ChoirListView");
-                    var vm = Container.Current.Resolve<IViewModel>("ChoirListViewModel");
-
-					BusinessManager.FrameworkInterfaces.Navigation.Current.Show(view, vm);
-				});
-			}
-		}
-
 		public ICommand SaveCommand
 		{
 			get

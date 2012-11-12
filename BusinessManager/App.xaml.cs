@@ -6,6 +6,7 @@ using System.Data.Objects;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using BusinessManager.Framework;
 using BusinessManager.FrameworkInterfaces;
 using BusinessManager.Model;
@@ -24,6 +25,8 @@ namespace BusinessManager
 		{
 			base.OnStartup(e);
 
+			MainWindow = new MainWindow();
+
 			SetupContainer();
 
 			DemoData.InitDemoData();
@@ -36,7 +39,6 @@ namespace BusinessManager
 			var view = Container.Current.Resolve<IView>("MainMenuView");
 			var vm = Container.Current.Resolve<IViewModel>("MainMenuViewModel");
 
-			MainWindow = new MainWindow();
 			MainWindow.Show();
 			Navigation.Current.Show(view, vm);
 		}

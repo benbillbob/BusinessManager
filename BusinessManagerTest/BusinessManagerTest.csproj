@@ -51,6 +51,7 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -71,6 +72,8 @@
     <Compile Include="Framework\ViewModel_Test.cs" />
     <Compile Include="Model\DummyEntities.cs" />
     <Compile Include="ViewModels\ChoirDetailViewModel_Test.cs" />
+    <Compile Include="ViewModels\ChoirListViewModel_Test.cs" />
+    <Compile Include="ViewModels\NavigationViewModel_Test.cs" />
     <Compile Include="ViewModels\StudentListViewModel_Test.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel_Test.cs" />
     <Compile Include="ViewModels\MainMenuViewModel_Test.cs" />

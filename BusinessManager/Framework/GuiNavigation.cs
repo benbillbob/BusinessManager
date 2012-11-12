@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Practices.Unity;
+using BusinessManager.FrameworkInterfaces;
 
-namespace BusinessManager.FrameworkInterfaces
+namespace BusinessManager.Framework
 {
 	public class GuiNavigation : INavigation
 	{
@@ -24,7 +25,7 @@ namespace BusinessManager.FrameworkInterfaces
 			{
 				if (navigationContainer == null)
 				{
-					navigationContainer = (ScrollViewer)Window.FindName("Navigation");
+					navigationContainer = (ScrollViewer)Viewer.FindName("Navigation");
 				}
 				return navigationContainer;
 			}
@@ -39,22 +40,22 @@ namespace BusinessManager.FrameworkInterfaces
 			{
 				if (mainViewContainer == null)
 				{
-					mainViewContainer = (ScrollViewer)Window.FindName("MainView");
+					mainViewContainer = (ScrollViewer)Viewer.FindName("MainView");
 				}
 				return mainViewContainer;
 			}
 			set { mainViewContainer = value; }
 		}
 
-		Window window;
+		ContentControl viewer;
 
-		Window Window
+		ContentControl Viewer
 		{
 			get
 			{
-				if (window == null)
+				if (viewer == null)
 				{
-					window = App.Current.MainWindow;
+					viewer = App.Current.MainWindow;
 					var view = Container.Current.Resolve<IView>("NavigationView");
 					var vm = Container.Current.Resolve<IViewModel>("NavigationViewModel");
 
@@ -62,7 +63,7 @@ namespace BusinessManager.FrameworkInterfaces
 					NavigationContainer.Content = view;
 				}
 
-				return window;
+				return viewer;
 			}
 		}
 
@@ -70,6 +71,14 @@ namespace BusinessManager.FrameworkInterfaces
 		{
 			((UserControl)view).DataContext = vm;
 			MainViewContainer.Content = view;
+			if (vm.IsFullScreen())
+			{
+				NavigationContainer.Visibility = Visibility.Hidden;
+			}
+			else
+			{
+				NavigationContainer.Visibility = Visibility.Visible;
+			}
 		}
 	}
 }

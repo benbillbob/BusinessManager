@@ -82,9 +82,9 @@ namespace BusinessManagerTest.ViewModels
 		}
 
 		[Test]
-		public void ChoirDetailViewModel_ChoirListCommand()
+		public void ChoirDetailViewModel_IsFullScreenReturnsFalse()
 		{
-			TestHelpers.NavigationTest("ChoirListView", "ChoirListViewModel", vm.ChoirListCommand);
+			Assert.That(vm.IsFullScreen(), Is.False);
 		}
 	}
 }

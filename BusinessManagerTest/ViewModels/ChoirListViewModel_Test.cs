@@ -18,45 +18,45 @@ using BusinessManagerTest.Framework;
 namespace BusinessManagerTest.ViewModels
 {
 	[TestFixture]
-	public class StudentListViewModel_Test
+	public class ChoirListViewModel_Test
 	{
-		StudentListViewModel vm;
+		ChoirListViewModel vm;
 
 		[SetUp]
 		public void Setup()
 		{
 			Container.Current.RegisterInstance<IBusinessManagerEntities>(new DummyEntities());
 
-			vm = new StudentListViewModel();
+			vm = new ChoirListViewModel();
 		}
 
 		[Test]
-		public void StudentListViewModel_Constructor()
+		public void ChoirListViewModel_Constructor()
 		{
 			Assert.That(vm, Is.Not.Null);
 		}
 
 		[Test]
-		public void StudentListViewModel_Students()
+		public void ChoirListViewModel_Choirs()
 		{
-			var students = vm.Students;
-			Assert.That(students.Count(), Is.EqualTo(1));
+			var choirs = vm.Choirs;
+			Assert.That(choirs.Count(), Is.EqualTo(1));
 		}
 
 		[Test]
-		public void StudentListViewModel_StudentAddCommand()
+		public void ChoirListViewModel_ChoirAddCommand()
 		{
-			TestHelpers.NavigationTest("StudentDetailView", "StudentDetailViewModel", vm.StudentAddCommand);
+			TestHelpers.NavigationTest("ChoirDetailView", "ChoirDetailViewModel", vm.ChoirAddCommand);
 		}
 
 		[Test]
-		public void StudentListViewModel_StudentSelectedCommand()
+		public void ChoirListViewModel_ChoirSelectedCommand()
 		{
-			TestHelpers.NavigationTest("StudentDetailView", "StudentDetailViewModel", vm.StudentSelectedCommand, new Student());
+			TestHelpers.NavigationTest("ChoirDetailView", "ChoirDetailViewModel", vm.ChoirSelectedCommand, new Choir());
 		}
 
 		[Test]
-		public void StudentListViewModel_IsFullScreenReturnsFalse()
+		public void ChoirListViewModel_IsFullScreenReturnsFalse()
 		{
 			Assert.That(vm.IsFullScreen(), Is.False);
 		}

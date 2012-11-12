@@ -41,5 +41,7 @@ namespace BusinessManager.ViewModels
                 });
             }
         }
+
+		public override bool IsFullScreen(){ return true; } 
     }
 }

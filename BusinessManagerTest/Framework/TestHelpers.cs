@@ -16,7 +16,7 @@ namespace BusinessManagerTest.Framework
 	{
 	}
 
-	public class DummyViewModel : IViewModel, IDetailViewModel
+	public class DummyViewModel : ViewModel, IViewModel, IDetailViewModel
 	{
 		public Guid Id { set { } }
 	}

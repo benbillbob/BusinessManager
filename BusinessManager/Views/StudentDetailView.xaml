@@ -23,6 +23,6 @@
 		<Label Grid.Row="0" Grid.Column="0">FirstName: </Label>
 		<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.FirstName}"></TextBox>
         <Label Grid.Row="1" Grid.Column="0">Choir:</Label>
-		<ComboBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId}"/>
+		<ComboBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId, Mode=TwoWay}"/>
 	</Grid>
 </UserControl>

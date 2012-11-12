@@ -90,9 +90,9 @@ namespace BusinessManagerTest.ViewModels
 		}
 
 		[Test]
-		public void StudentDetailViewModel_StudentListCommand()
+		public void StudentDetailViewModel_IsFullScreenReturnsFalse()
 		{
-			TestHelpers.NavigationTest("StudentListView", "StudentListViewModel", vm.StudentListCommand);
+			Assert.That(vm.IsFullScreen(), Is.False);
 		}
 	}
 }

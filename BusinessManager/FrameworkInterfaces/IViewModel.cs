@@ -8,5 +8,6 @@ namespace BusinessManager.FrameworkInterfaces
 {
 	public interface IViewModel
 	{
+		bool IsFullScreen();
 	}
 }

@@ -39,20 +39,6 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-		public ICommand HomeCommand
-		{
-			get
-			{
-				return new RelayCommand(_ =>
-				{
-					var view = Container.Current.Resolve<IView>("MainMenuView");
-					var vm = Container.Current.Resolve<IViewModel>("MainMenuViewModel");
-
-					BusinessManager.FrameworkInterfaces.Navigation.Current.Show(view, vm);
-				});
-			}
-		}
-
         public ICommand ChoirSelectedCommand
 		{
 			get

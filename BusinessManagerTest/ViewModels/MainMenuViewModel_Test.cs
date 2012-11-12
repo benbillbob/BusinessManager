@@ -17,14 +17,6 @@ namespace BusinessManagerTest.ViewModels
     [TestFixture]
     public class MainMenuViewModel_Test
     {
-        public class DummyView : IView
-        {
-        }
-
-        public class DummyViewModel : IViewModel
-        {
-        }
-
         MainMenuViewModel vm;
 
         [SetUp]
@@ -49,6 +41,12 @@ namespace BusinessManagerTest.ViewModels
         public void MainMenuViewModel_ChoirListCommand()
         {
 			TestHelpers.NavigationTest("ChoirListView", "ChoirListViewModel", vm.ChoirListCommand);
+		}
+
+		[Test]
+		public void MainMenuViewModel_IsFullScreenReturnsTrue()
+		{
+			Assert.That(vm.IsFullScreen(), Is.True);
 		}
     }
 }

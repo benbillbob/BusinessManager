@@ -64,20 +64,6 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-		public ICommand StudentListCommand
-		{
-			get
-			{
-				return new RelayCommand(_ =>
-				{
-					var view = Container.Current.Resolve<IView>("StudentListView");
-					var vm = Container.Current.Resolve<IViewModel>("StudentListViewModel");
-
-					BusinessManager.FrameworkInterfaces.Navigation.Current.Show(view, vm);
-				});
-			}
-		}
-
 		public ICommand SaveCommand
 		{
 			get

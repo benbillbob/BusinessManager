@@ -233,7 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BusinessManager.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

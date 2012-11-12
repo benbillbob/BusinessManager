@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using BusinessManager.Framework;
 using BusinessManager.FrameworkInterfaces;
 using NUnit.Framework;
+using Microsoft.Practices.Unity;
+using Moq;
 
 namespace BusinessManagerTest.Framework
 {
@@ -17,10 +19,19 @@ namespace BusinessManagerTest.Framework
 		}
 
 		[Test]
-		public void ViewModel_NavigationReturnsTypeOfNavigation()
+		public void ViewModel_NavigationReturnsNavigation()
+		{
+			var mockNav = Mock.Of<INavigation>();
+			Container.Current.RegisterInstance<INavigation>(mockNav);
+			var t = new TestViewModel();
+			Assert.That(t.Navigation, Is.Not.Null);
+		}
+
+		[Test]
+		public void ViewModel_IsFullscreenReturnsFalse()
 		{
 			var t = new TestViewModel();
-			Assert.That(t.Navigation, Is.TypeOf(typeof(GuiNavigation)));
+			Assert.That(t.IsFullScreen(), Is.False);
 		}
 	}
 }

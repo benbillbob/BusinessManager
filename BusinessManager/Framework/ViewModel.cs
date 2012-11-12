@@ -13,5 +13,7 @@ namespace BusinessManager.Framework
 		{
 			get { return BusinessManager.FrameworkInterfaces.Navigation.Current; }
 		}
+
+		public virtual bool IsFullScreen() { return false; }
 	}
 }

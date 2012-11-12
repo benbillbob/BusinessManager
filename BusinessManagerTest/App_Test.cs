@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using BusinessManager;
 using BusinessManager.Framework;
 using BusinessManager.FrameworkInterfaces;
 using BusinessManager.Model;
 using Microsoft.Practices.Unity;
+using Moq;
 using NUnit.Framework;
 
 namespace BusinessManagerTest
