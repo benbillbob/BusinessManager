@@ -14,28 +14,56 @@ using BusinessManager.FrameworkInterfaces;
 using BusinessManager.Model;
 using BusinessManager.Views;
 using Microsoft.Practices.Unity;
+using System.Windows.Data;
 
 namespace BusinessManager.ViewModels
 {
 	public class StudentListViewModel : ViewModel
 	{
 		List<Student> students;
+		ListCollectionView studentsView;
 
-		public List<Student> Students
+		public ListCollectionView Students
 		{
-			get 
+			get
 			{
-				if (students == null)
+				if (studentsView == null)
 				{
-					var context = Container.Current.Resolve<BusinessManagerEntities>();
-					var db = context.Students;
-					var q = from s in db
-							select s;
+					if (students == null)
+					{
+						var context = Container.Current.Resolve<BusinessManagerEntities>();
+						var db = context.Students;
+						var q = from s in db
+								select s;
 
-					students = q.ToList();
+						students = q.ToList();
+					}
+
+					studentsView = new ListCollectionView(students);
+					studentsView.Filter = new Predicate<object>((o) => 
+					{
+						if 
+						(
+							SelectedChoirId == null
+							||
+							SelectedChoirId != Guid.Empty
+						)
+						{
+							return true;
+						}
+
+						if(((Student)o).ChoirId == SelectedChoirId)
+						{
+							return true;
+						}
+						else
+						{
+							return false;
+						}
+					});
 				}
 
-				return students;
+				return studentsView;
 			}
 		}
 
@@ -80,6 +108,40 @@ namespace BusinessManager.ViewModels
 
 					Navigation.Show(view, vm);
 				});
+			}
+		}
+
+		List<Choir> choirs;
+
+		public List<Choir> Choirs
+		{
+			get
+			{
+				if (choirs == null)
+				{
+					var context = Container.Current.Resolve<BusinessManagerEntities>();
+					var q = from c in context.Choirs
+							select c;
+
+					choirs = q.ToList();
+				}
+
+				return choirs;
+			}
+		}
+
+		Guid? selectedChoirId;
+
+		public Guid? SelectedChoirId
+		{
+			get { return selectedChoirId; }
+			set
+			{
+				if (selectedChoirId != value)
+				{
+					selectedChoirId = value;
+					OnPropertyChanged("SelectedChoirId");
+				}
 			}
 		}
 	}
