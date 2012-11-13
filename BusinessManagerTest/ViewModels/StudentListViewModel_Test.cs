@@ -10,6 +10,7 @@ using System.Windows.Input;
 using BusinessManager.Model;
 using Microsoft.Practices.Unity;
 using System.Data.Entity;
+using System.Windows.Data;
 using System.Data.Entity.Infrastructure;
 using Moq;
 using BusinessManager.FrameworkInterfaces;

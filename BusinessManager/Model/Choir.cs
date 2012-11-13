@@ -17,11 +17,13 @@ namespace BusinessManager.Model
         public Choir()
         {
             this.Students = new HashSet<Student>();
+            this.Rolls = new HashSet<Roll>();
         }
     
         public System.Guid Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<Roll> Rolls { get; set; }
     }
 }

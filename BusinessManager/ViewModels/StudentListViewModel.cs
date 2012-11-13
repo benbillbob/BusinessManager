@@ -14,6 +14,7 @@ using BusinessManager.FrameworkInterfaces;
 using BusinessManager.Model;
 using BusinessManager.Views;
 using Microsoft.Practices.Unity;
+using System.Windows.Data;
 
 namespace BusinessManager.ViewModels
 {
@@ -23,12 +24,16 @@ namespace BusinessManager.ViewModels
 
 		public List<Student> Students
 		{
-			get 
+			get
 			{
 				if (students == null)
 				{
 					var context = Container.Current.Resolve<IBusinessManagerEntities>();
-					students = context.Students.ToList();
+					var db = context.Students;
+					var q = from s in db
+							select s;
+
+					students = q.ToList();
 				}
 
 				return students;
@@ -62,6 +67,40 @@ namespace BusinessManager.ViewModels
 
 					Navigation.Show(view, vm);
 				});
+			}
+		}
+
+		List<Choir> choirs;
+
+		public List<Choir> Choirs
+		{
+			get
+			{
+				if (choirs == null)
+				{
+					var context = Container.Current.Resolve<IBusinessManagerEntities>();
+					var q = from c in context.Choirs
+							select c;
+
+					choirs = q.ToList();
+				}
+
+				return choirs;
+			}
+		}
+
+		Guid? selectedChoirId;
+
+		public Guid? SelectedChoirId
+		{
+			get { return selectedChoirId; }
+			set
+			{
+				if (selectedChoirId != value)
+				{
+					selectedChoirId = value;
+					OnPropertyChanged("SelectedChoirId");
+				}
 			}
 		}
 	}

@@ -6,11 +6,16 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a348d88e710e415597a15afab0d69e25" Name="Diagram1">
         <EntityTypeShape EntityType="BusinessManager.Model.Choir" Width="1.5" PointX="10.420224738502981" PointY="18.422177382941442" />
-        <EntityTypeShape EntityType="BusinessManager.Model.Student" Width="1.5" PointX="7.8949977550166652" PointY="15.345350406759117" />
+        <EntityTypeShape EntityType="BusinessManager.Model.Student" Width="1.5" PointX="8" PointY="15.375" />
         <AssociationConnector Association="BusinessManager.Model.StudentChoir" />
         <EntityTypeShape EntityType="BusinessManager.Model.Control" Width="1.5" PointX="7.2498413712018355" PointY="0.71608996424641924" />
         <EntityTypeShape EntityType="BusinessManager.Model.Payment" Width="1.5" PointX="5.6094040580137658" PointY="30.999089359771038" />
         <AssociationConnector Association="BusinessManager.Model.PaymentStudent" />
+        <EntityTypeShape EntityType="BusinessManager.Model.Roll" Width="1.5" PointX="0.69553787479900664" PointY="13.644958040511682" />
+        <EntityTypeShape EntityType="BusinessManager.Model.StudentAttendence" Width="1.5" PointX="4.7021539102784145" PointY="18.530690022991362" />
+        <AssociationConnector Association="BusinessManager.Model.ChoirRoll" />
+        <AssociationConnector Association="BusinessManager.Model.RollAttendence" />
+        <AssociationConnector Association="BusinessManager.Model.StudentRoll" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -118,7 +118,13 @@
     <Compile Include="Model\Payment.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Roll.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Student.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StudentAttendence.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ChoirDetailViewModel.cs" />
