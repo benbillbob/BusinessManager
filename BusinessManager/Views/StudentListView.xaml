@@ -20,8 +20,7 @@
 		</Grid.RowDefinitions>
 		<Label Grid.Row="0" Grid.Column="0">Choir:</Label>
 		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}"/>
-		<Button Grid.Row="2" Grid.Column="1" Command="{Binding StudentAddCommand}">Add</Button>
-		<Button Grid.Row="3" Grid.Column="1" Command="{Binding HomeCommand}">Home</Button>
+		<Button Grid.Row="2" Grid.Column="2" Command="{Binding StudentAddCommand}">Add</Button>
 		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Students}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
