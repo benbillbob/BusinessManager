@@ -41,7 +41,8 @@ namespace BusinessManagerTest.ViewModels
 		public void StudentListViewModel_Students()
 		{
 			var students = vm.Students;
-			Assert.That(students.Count(), Is.EqualTo(1));
+			var studentA = Container.Current.Resolve<IBusinessManagerEntities>().Students.FirstOrDefault();
+			Assert.That(students.View, Contains.Item(studentA));
 		}
 
 		[Test]
@@ -60,6 +61,35 @@ namespace BusinessManagerTest.ViewModels
 		public void StudentListViewModel_IsFullScreenReturnsFalse()
 		{
 			Assert.That(vm.IsFullScreen(), Is.False);
+		}
+
+		[Test]
+		public void StudentListViewModel_AllStudentsMatchingFilters()
+		{
+			var data = Container.Current.Resolve<IBusinessManagerEntities>();
+
+			var allStudents = data.Students.ToList();
+
+			Assert.That(vm.Students.View, Is.EquivalentTo(allStudents));
+	
+			var choirId = data.Choirs.First().Id;
+
+			var studentsInChoir = from s in data.Students
+								  where s.ChoirId == choirId
+								  select s;
+
+			vm.SelectedChoirId = choirId;
+			Assert.That(vm.Students.View, Is.EquivalentTo(studentsInChoir));
+		}
+		
+		[Test]
+		public void StudentListViewModel_Choirs()
+		{
+			var data = Container.Current.Resolve<IBusinessManagerEntities>();
+
+			var allChoirs = data.Choirs.ToList();
+
+			Assert.That(vm.Choirs, Is.EquivalentTo(allChoirs));
 		}
 	}
 }

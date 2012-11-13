@@ -10,6 +10,7 @@ public class DummyEntities : IBusinessManagerEntities
 	{
 		choirAID = Guid.NewGuid();
 		studentA = new Student() { FirstName = "StudentA", Id = Guid.NewGuid(), ChoirId = choirAID };
+		studentB = new Student() { FirstName = "StudentB", Id = Guid.NewGuid() };
 		choirA = new Choir() { Id = choirAID, Name = "ChoirA", Students = Students.ToList() };
 		studentA.Choir = choirA;
 	}
@@ -17,8 +18,9 @@ public class DummyEntities : IBusinessManagerEntities
 	Guid choirAID;
 	Choir choirA;
 	Student studentA;
+	Student studentB;
 
-	public IEnumerable<Student> Students { get { return new List<Student>() { studentA }; } }
+	public IEnumerable<Student> Students { get { return new List<Student>() { studentA, studentB }; } }
 	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA }; } }
 	public IEnumerable<Control> Controls { get { return new List<Control>() { }; } }
 

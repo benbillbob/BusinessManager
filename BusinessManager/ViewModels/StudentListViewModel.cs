@@ -20,23 +20,53 @@ namespace BusinessManager.ViewModels
 {
 	public class StudentListViewModel : ViewModel
 	{
-		List<Student> students;
+		CollectionViewSource students;
 
-		public List<Student> Students
+		public CollectionViewSource Students
 		{
-			get
+			get 
 			{
 				if (students == null)
 				{
-					var context = Container.Current.Resolve<IBusinessManagerEntities>();
-					var db = context.Students;
-					var q = from s in db
-							select s;
-
-					students = q.ToList();
+					students = new CollectionViewSource();
+					students.Source = StudentsInternal;
+					students.Filter += students_Filter;
+					PropertyChanged += StudentListViewModel_SelectedChoirIdPropertyChanged;
 				}
 
-				return students;
+				return students; 
+			}
+		}
+
+		void StudentListViewModel_SelectedChoirIdPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			if (e.PropertyName == "SelectedChoirId")
+			{
+				students.View.Refresh();
+			}
+		}
+
+		void students_Filter(object sender, FilterEventArgs e)
+		{
+			var s = (Student)e.Item;
+			e.Accepted = SelectedChoirId == Guid.Empty || SelectedChoirId == s.ChoirId;
+		}
+			
+		List<Student> studentsInternal;
+
+		List<Student> StudentsInternal
+		{
+			get
+			{
+				if (studentsInternal == null)
+				{
+					var context = Container.Current.Resolve<IBusinessManagerEntities>();
+					var db = context.Students;
+
+					studentsInternal = db.ToList();
+				}
+
+				return studentsInternal;
 			}
 		}
 
@@ -83,15 +113,16 @@ namespace BusinessManager.ViewModels
 							select c;
 
 					choirs = q.ToList();
+					choirs.Insert(0, new Choir());
 				}
 
 				return choirs;
 			}
 		}
 
-		Guid? selectedChoirId;
+		Guid selectedChoirId;
 
-		public Guid? SelectedChoirId
+		public Guid SelectedChoirId
 		{
 			get { return selectedChoirId; }
 			set

@@ -32,5 +32,22 @@ namespace BusinessManagerTest
 			Assert.That(Container.Current.Resolve<IViewModel>("MainMenuViewModel"), Is.Not.Null);
 			Assert.That(Container.Current.Resolve<IBusinessManagerEntities>(), Is.Not.Null);
 		}
+
+		[Test]
+		[RequiresSTA]
+		public void TestMainWindow()
+		{
+			var win = new MainWindow();
+			Assert.That(win, Is.Not.Null);
+
+			var rc = new RelayCommand(_ => { });
+			rc.CanExecuteChanged += rc_CanExecuteChanged;
+			rc.CanExecuteChanged -= rc_CanExecuteChanged;
+		}
+
+		void rc_CanExecuteChanged(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
