@@ -57,7 +57,7 @@ namespace BusinessManagerTest.ViewModels
 		}
 
 		[Test]
-		public void StudentDetailViewModel_IsFullScreenReturnsFalse()
+		public void NavigationViewModel_IsFullScreenReturnsFalse()
 		{
 			Assert.That(vm.IsFullScreen(), Is.False);
 		}
