@@ -60,5 +60,19 @@ namespace BusinessManager.ViewModels
 				});
 			}
 		}
+
+		public ICommand RollListCommand
+		{
+			get
+			{
+				return new RelayCommand(_ =>
+				{
+					var view = Container.Current.Resolve<IView>("RollListView");
+					var vm = Container.Current.Resolve<IViewModel>("RollListViewModel");
+
+					Navigation.Show(view, vm);
+				});
+			}
+		}
 	}
 }

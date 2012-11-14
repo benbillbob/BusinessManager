@@ -129,6 +129,8 @@
     </Compile>
     <Compile Include="ViewModels\ChoirDetailViewModel.cs" />
     <Compile Include="ViewModels\ChoirListViewModel.cs" />
+    <Compile Include="ViewModels\RollDetailViewModel.cs" />
+    <Compile Include="ViewModels\RollListViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
@@ -138,6 +140,12 @@
     </Compile>
     <Compile Include="Views\ChoirListView.xaml.cs">
       <DependentUpon>ChoirListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RollDetailView.xaml.cs">
+      <DependentUpon>RollDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RollListView.xaml.cs">
+      <DependentUpon>RollListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
@@ -168,6 +176,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ChoirListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RollDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RollListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

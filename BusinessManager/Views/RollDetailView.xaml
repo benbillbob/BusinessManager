@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="BusinessManager.Views.StudentListView"
+﻿<UserControl x:Class="BusinessManager.Views.RollDetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -18,11 +18,23 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<Label Grid.Row="0" Grid.Column="0">Choir:</Label>
-		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}"/>
-		<Button Grid.Row="2" Grid.Column="2" Command="{Binding StudentAddCommand}">Add</Button>
-		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Students.View}">
-			<ItemsControl.ItemTemplate>
+        <Button Grid.Row="3" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
+        <Label Grid.Row="0" Grid.Column="0">Choir:</Label>
+		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}">
+			<ComboBox.Style>
+				<Style>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding Path=ChoirSelectionReadOnly}" Value="True">
+							<Setter Property="ComboBox.Focusable" Value="False"/>
+							<Setter Property="ComboBox.IsEnabled" Value="False"/>
+							<Setter Property="ComboBox.IsHitTestVisible" Value="False"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</ComboBox.Style>
+		</ComboBox>
+		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Students}">
+			<!--<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.StudentSelectedCommand}" CommandParameter="{Binding}">
 						<Button.Template>
@@ -31,11 +43,11 @@
 							</ControlTemplate>
 						</Button.Template>
 						<WrapPanel>
-							<TextBlock Text="{Binding FirstName}" />
+							<TextBlock Text="{Binding Path=Student.FirstName}" />
 						</WrapPanel>
 					</Button>
 				</DataTemplate>
-			</ItemsControl.ItemTemplate>
+			</ItemsControl.ItemTemplate>-->
 		</ItemsControl>
 	</Grid>
 </UserControl>

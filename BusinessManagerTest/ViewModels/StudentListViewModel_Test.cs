@@ -88,8 +88,9 @@ namespace BusinessManagerTest.ViewModels
 			var data = Container.Current.Resolve<IBusinessManagerEntities>();
 
 			var allChoirs = data.Choirs.ToList();
+			allChoirs.Insert(0, new Choir());
 
-			Assert.That(vm.Choirs, Is.EquivalentTo(allChoirs));
+			Assert.That(vm.Choirs.Count(), Is.EqualTo(allChoirs.Count()));
 		}
 	}
 }

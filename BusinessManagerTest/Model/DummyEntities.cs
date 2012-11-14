@@ -23,6 +23,8 @@ public class DummyEntities : IBusinessManagerEntities
 	public IEnumerable<Student> Students { get { return new List<Student>() { studentA, studentB }; } }
 	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA }; } }
 	public IEnumerable<Control> Controls { get { return new List<Control>() { }; } }
+	public IEnumerable<Roll> Rolls { get { return new List<Roll>() { }; } }
+	public IEnumerable<StudentAttendence> StudentAttendences { get { return new List<StudentAttendence>() { }; } }
 
 	public virtual int Save()
 	{
@@ -42,5 +44,19 @@ public class DummyEntities : IBusinessManagerEntities
 	public virtual void AddControl(Control control)
 	{
 		((List<Control>)Controls).Add(control);
+	}
+
+	public void AddStudentAttendence(StudentAttendence studentAttendence)
+	{
+		((List<StudentAttendence>)StudentAttendences).Add(studentAttendence);
+	}
+
+	public void AddRoll(Roll roll)
+	{
+		((List<Roll>)Rolls).Add(roll);
+	}
+
+	public void UpdateRoll(Roll roll)
+	{
 	}
 }

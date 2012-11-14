@@ -70,6 +70,7 @@
     <Compile Include="Framework\RelayCommand_Test.cs" />
     <Compile Include="Framework\TestHelpers.cs" />
     <Compile Include="Framework\ViewModel_Test.cs" />
+    <Compile Include="Model\BusinessManagerEntities_Test.cs" />
     <Compile Include="Model\DummyEntities.cs" />
     <Compile Include="ViewModels\ChoirDetailViewModel_Test.cs" />
     <Compile Include="ViewModels\ChoirListViewModel_Test.cs" />
