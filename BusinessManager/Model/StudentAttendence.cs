@@ -17,6 +17,7 @@ namespace BusinessManager.Model
         public System.Guid Id { get; set; }
         public Nullable<System.Guid> StudentId { get; set; }
         public Nullable<System.Guid> RollId { get; set; }
+        public Nullable<bool> Present { get; set; }
     
         public virtual Roll Roll { get; set; }
         public virtual Student Student { get; set; }

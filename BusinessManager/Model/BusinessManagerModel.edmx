@@ -77,6 +77,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StudentId" Type="uniqueidentifier" />
           <Property Name="RollId" Type="uniqueidentifier" />
+          <Property Name="Present" Type="bit" />
         </EntityType>
         <Association Name="ChoirRoll">
           <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
@@ -248,6 +249,7 @@
           <Property Type="Guid" Name="RollId" />
           <NavigationProperty Name="Roll" Relationship="BusinessManager.Model.RollAttendence" FromRole="StudentAttendence" ToRole="Roll" />
           <NavigationProperty Name="Student" Relationship="BusinessManager.Model.StudentRoll" FromRole="StudentAttendence" ToRole="Student" />
+          <Property Type="Boolean" Name="Present" />
         </EntityType>
         <Association Name="ChoirRoll">
           <End Type="BusinessManager.Model.Choir" Role="Choir" Multiplicity="0..1" />
@@ -336,6 +338,7 @@
           <EntitySetMapping Name="StudentAttendences">
             <EntityTypeMapping TypeName="BusinessManager.Model.StudentAttendence">
               <MappingFragment StoreEntitySet="StudentAttendence">
+                <ScalarProperty Name="Present" ColumnName="Present" />
                 <ScalarProperty Name="RollId" ColumnName="RollId" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
