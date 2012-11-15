@@ -21,7 +21,7 @@
 		<Label Grid.Row="0" Grid.Column="0">Choir:</Label>
 		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}"/>
 		<Button Grid.Row="2" Grid.Column="2" Command="{Binding RollAddCommand}">Add</Button>
-		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Rolls}">
+		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Rolls.View}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.RollSelectedCommand}" CommandParameter="{Binding}">

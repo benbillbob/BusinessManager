@@ -20,7 +20,11 @@ namespace BusinessManagerTest.ViewModels
 		[SetUp]
 		public void Setup()
 		{
-			Container.Current.RegisterType(typeof(IBusinessManagerEntities), typeof(DummyEntities));
+			var context = Mock.Of<DummyEntities>();
+			var contextMock = Mock.Get(context);
+			contextMock.CallBase = true;
+
+			Container.Current.RegisterInstance(typeof(IBusinessManagerEntities), context);
 			vm = new RollDetailViewModel();
 		}
 
@@ -28,17 +32,33 @@ namespace BusinessManagerTest.ViewModels
 		public void RollDetailViewModel_UpdateRoll()
 		{
 			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var choirId = context.Choirs.FirstOrDefault().Id;
+			var studentId = context.Students.FirstOrDefault().Id;
 
-			var choir = context.Choirs.FirstOrDefault();
-			var roll = new Roll();
-			roll.ChoirId = choir.Id;
+			Assert.That(vm.Students.Count(), Is.EqualTo(0));
 
-			context.AddRoll(roll);
+			var roll = vm.Roll;
+			vm.SelectedChoirId = choirId;
 
-			vm.UpdateRoll();
-
-			Assert.That(context.StudentAttendences.Count(), Is.EqualTo(1));
+			Assert.That(vm.Students.Count(), Is.EqualTo(1));
 		}
 
+		[Test]
+		public void RollDetailViewModel_Save()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var contextMock = Mock.Get((DummyEntities)context);
+
+			var choirId = context.Choirs.FirstOrDefault().Id;
+			var studentId = context.Students.FirstOrDefault().Id;
+
+			var roll = vm.Roll;
+			vm.SelectedChoirId = choirId;
+
+			vm.SaveCommand.Execute(null);
+
+			contextMock.Verify(x => x.AddRoll(It.Is<Roll>(r => r == vm.Roll)), Times.Exactly(1));
+			contextMock.Verify(x => x.AddStudentAttendence(It.Is<StudentAttendence>(r => r == vm.Students.First())), Times.Exactly(1));
+		}
 	}
 }

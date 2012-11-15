@@ -112,7 +112,13 @@ namespace BusinessManager.ViewModels
 
 						foreach (var s in Students)
 						{
-							s.Id = Guid.NewGuid();
+							if (s.Id == Guid.Empty)
+							{
+								s.Id = Guid.NewGuid();
+								Context.AddStudentAttendence(s);
+							}
+
+							s.RollId = Roll.Id;
 						}
 					}
 
@@ -132,6 +138,14 @@ namespace BusinessManager.ViewModels
 						select s;
 
 				roll = q.FirstOrDefault();
+				if (roll.ChoirId == null)
+				{
+					SelectedChoirId = Guid.NewGuid();
+				}
+				else
+				{
+					SelectedChoirId = (Guid)roll.ChoirId;
+				}
 			}
 		}
 
@@ -174,7 +188,7 @@ namespace BusinessManager.ViewModels
 							 select sa;
 
 			var q = from s in students
-					where !((from a in attendence select a.Id).Contains(s))
+					where !((from a in attendence select a.StudentId).Contains(s))
 					select s;
 
 			foreach (var ns in q)

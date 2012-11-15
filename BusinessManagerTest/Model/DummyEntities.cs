@@ -46,17 +46,13 @@ public class DummyEntities : IBusinessManagerEntities
 		((List<Control>)Controls).Add(control);
 	}
 
-	public void AddStudentAttendence(StudentAttendence studentAttendence)
+	public virtual void AddStudentAttendence(StudentAttendence studentAttendence)
 	{
 		((List<StudentAttendence>)StudentAttendences).Add(studentAttendence);
 	}
 
-	public void AddRoll(Roll roll)
+	public virtual void AddRoll(Roll roll)
 	{
 		((List<Roll>)Rolls).Add(roll);
-	}
-
-	public void UpdateRoll(Roll roll)
-	{
 	}
 }
