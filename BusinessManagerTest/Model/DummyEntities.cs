@@ -9,19 +9,23 @@ public class DummyEntities : IBusinessManagerEntities
 	public DummyEntities()
 	{
 		choirAID = Guid.NewGuid();
+		choirBID = Guid.NewGuid();
 		studentA = new Student() { FirstName = "StudentA", Id = Guid.NewGuid(), ChoirId = choirAID };
 		studentB = new Student() { FirstName = "StudentB", Id = Guid.NewGuid() };
-		choirA = new Choir() { Id = choirAID, Name = "ChoirA", Students = Students.ToList() };
+		choirA = new Choir() { Id = choirAID, Name = "ChoirA", Students = (from s in Students where s.ChoirId == choirAID select s).ToList() };
+		choirB = new Choir() { Id = choirBID, Name = "ChoirB", Students = (from s in Students where s.ChoirId == choirBID select s).ToList() };
 		studentA.Choir = choirA;
 	}
 
 	Guid choirAID;
 	Choir choirA;
+	Guid choirBID;
+	Choir choirB;
 	Student studentA;
 	Student studentB;
 
 	public IEnumerable<Student> Students { get { return new List<Student>() { studentA, studentB }; } }
-	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA }; } }
+	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA, choirB }; } }
 	public IEnumerable<Control> Controls { get { return new List<Control>() { }; } }
 	public IEnumerable<Roll> Rolls { get { return new List<Roll>() { }; } }
 	public IEnumerable<StudentAttendence> StudentAttendences { get { return new List<StudentAttendence>() { }; } }

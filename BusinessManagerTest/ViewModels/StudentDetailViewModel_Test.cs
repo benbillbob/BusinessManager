@@ -40,7 +40,7 @@ namespace BusinessManagerTest.ViewModels
 		public void StudentDetailViewModel_Choirs()
 		{
 			var choirs = vm.Choirs;
-			Assert.That(choirs.Count(), Is.EqualTo(1));
+			Assert.That(choirs.Count(), Is.EqualTo(2));
 		}
 
 		[Test]

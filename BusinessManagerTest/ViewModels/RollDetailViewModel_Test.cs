@@ -29,7 +29,7 @@ namespace BusinessManagerTest.ViewModels
 		}
 
 		[Test]
-		public void RollDetailViewModel_UpdateRoll()
+		public void RollDetailViewModel_UpdateRoll_AddStudents()
 		{
 			var context = Container.Current.Resolve<IBusinessManagerEntities>();
 			var choirId = context.Choirs.FirstOrDefault().Id;
@@ -41,6 +41,41 @@ namespace BusinessManagerTest.ViewModels
 			vm.SelectedChoirId = choirId;
 
 			Assert.That(vm.Students.Count(), Is.EqualTo(1));
+		}
+
+		[Test]
+		public void RollDetailViewModel_UpdateRoll_NoStudents()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var choirId = context.Choirs.Skip(1).First().Id;
+			var studentId = context.Students.FirstOrDefault().Id;
+
+			Assert.That(vm.Students.Count(), Is.EqualTo(0));
+
+			var roll = vm.Roll;
+			vm.SelectedChoirId = choirId;
+
+			Assert.That(vm.Students.Count(), Is.EqualTo(0));
+		}
+
+		[Test]
+		public void RollDetailViewModel_UpdateRoll_RemoveStudents()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var choirId = context.Choirs.FirstOrDefault().Id;
+			var studentId = context.Students.FirstOrDefault().Id;
+
+			Assert.That(vm.Students.Count(), Is.EqualTo(0));
+
+			var roll = vm.Roll;
+			vm.SelectedChoirId = choirId;
+			choirId = context.Choirs.Skip(1).First().Id;
+
+			Assert.That(vm.Students.Count(), Is.EqualTo(1));
+	
+			vm.SelectedChoirId = choirId;
+
+			Assert.That(vm.Students.Count(), Is.EqualTo(0));
 		}
 
 		[Test]

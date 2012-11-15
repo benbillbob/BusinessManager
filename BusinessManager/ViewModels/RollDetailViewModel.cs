@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Data.Objects;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,8 @@ namespace BusinessManager.ViewModels
 			{
 				Roll.ChoirId = SelectedChoirId;
 				UpdateRoll();
-				OnPropertyChanged("Students");
+				//OnPropertyChanged("Students");
+				//CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Students));
 			}
 		}
 
@@ -64,9 +66,9 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-		List<StudentAttendence> students;
+		Collection<StudentAttendence> students;
 
-		public List<StudentAttendence> Students
+		public Collection<StudentAttendence> Students
 		{
 			get
 			{
@@ -76,7 +78,7 @@ namespace BusinessManager.ViewModels
 							where s.RollId == Roll.Id
 							select s;
 
-					students = q.ToList();
+					students = new ObservableCollection<StudentAttendence>(q.ToList());
 				}
 
 				return students;
@@ -180,42 +182,41 @@ namespace BusinessManager.ViewModels
 		void AddStudentsToRoll()
 		{
 			var students = from student in Context.Students
-						   where student.ChoirId == roll.ChoirId
-						   select student.Id;
+						   where student.ChoirId == Roll.ChoirId
+						   select student;
+
+			var students2 = Context.Students.Where(x => x.ChoirId == Roll.ChoirId);
 
 			var attendence = from sa in Students
 							 where sa.RollId == Roll.Id
 							 select sa;
 
 			var q = from s in students
-					where !((from a in attendence select a.StudentId).Contains(s))
+					where !((from a in attendence select a.StudentId).Contains(s.Id))
 					select s;
+
+			var q2 = students.Where(s => !attendence.Select(a => a.StudentId).Contains(s.Id));
 
 			foreach (var ns in q)
 			{
 				var sa = new StudentAttendence();
-				sa.StudentId = ns;
+				sa.StudentId = ns.Id;
+				sa.Student = ns;
 				sa.RollId = Roll.Id;
-				sa.Student = (from w in Context.Students
-							  where w.Id == sa.StudentId
-							  select w).First();
 				Students.Add(sa);
 			}
 		}
 
 		void RemoveStudentsFromRoll()
 		{
-			var q = from s in Students
+			var q = (from s in Students
 					where s.RollId == Roll.Id
 					where s.Student.ChoirId != roll.ChoirId
-					select s;
+					select s).ToArray();
 
 			foreach (var s in q)
 			{
-				if (s.Id != Guid.Empty)
-				{
-					Students.Remove(s);
-				}
+				Students.Remove(s);
 			}
 		}
 
@@ -224,6 +225,5 @@ namespace BusinessManager.ViewModels
 			RemoveStudentsFromRoll();
 			AddStudentsToRoll();
 		}
-
 	}
 }
