@@ -12,50 +12,16 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    using System.ComponentModel;
-    
-    public partial class Choir : INotifyPropertyChanged
+    public partial class Choir
     {
-    	public event PropertyChangedEventHandler PropertyChanged;
-    
-    	protected virtual void OnPropertyChanged(string propertyName)
-    	{
-            if (PropertyChanged!= null) 
-    		{
-    			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-    		}
-    	}
-    
         public Choir()
         {
             this.Students = new HashSet<Student>();
             this.Rolls = new HashSet<Roll>();
         }
     
-    	private System.Guid id;
-    
-        public System.Guid Id 
-    	{ 
-    		get { return id; } 
-    		set
-    		{
-    			id = value;
-    			//OnPropertyChanged("Id");
-    		} 
-    	}
-    
-    	private string name;
-    
-        public string Name 
-    	{ 
-    		get { return name; } 
-    		set
-    		{
-    			name = value;
-    			//OnPropertyChanged("Name");
-    		} 
-    	}
-    
+        public System.Guid Id { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Roll> Rolls { get; set; }

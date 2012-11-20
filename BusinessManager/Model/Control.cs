@@ -12,31 +12,8 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    using System.ComponentModel;
-    
-    public partial class Control : INotifyPropertyChanged
+    public partial class Control
     {
-    	public event PropertyChangedEventHandler PropertyChanged;
-    
-    	protected virtual void OnPropertyChanged(string propertyName)
-    	{
-            if (PropertyChanged!= null) 
-    		{
-    			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-    		}
-    	}
-    
-    	private System.Guid id;
-    
-        public System.Guid Id 
-    	{ 
-    		get { return id; } 
-    		set
-    		{
-    			id = value;
-    			//OnPropertyChanged("Id");
-    		} 
-    	}
-    
+        public System.Guid Id { get; set; }
     }
 }

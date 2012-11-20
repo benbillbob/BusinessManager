@@ -12,61 +12,16 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    using System.ComponentModel;
-    
-    public partial class Roll : INotifyPropertyChanged
+    public partial class Roll
     {
-    	public event PropertyChangedEventHandler PropertyChanged;
-    
-    	protected virtual void OnPropertyChanged(string propertyName)
-    	{
-            if (PropertyChanged!= null) 
-    		{
-    			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-    		}
-    	}
-    
         public Roll()
         {
             this.StudentAttendences = new HashSet<StudentAttendence>();
         }
     
-    	private System.Guid id;
-    
-        public System.Guid Id 
-    	{ 
-    		get { return id; } 
-    		set
-    		{
-    			id = value;
-    			//OnPropertyChanged("Id");
-    		} 
-    	}
-    
-    	private Nullable<System.DateTime> date;
-    
-        public Nullable<System.DateTime> Date 
-    	{ 
-    		get { return date; } 
-    		set
-    		{
-    			date = value;
-    			//OnPropertyChanged("Date");
-    		} 
-    	}
-    
-    	private Nullable<System.Guid> choirid;
-    
-        public Nullable<System.Guid> ChoirId 
-    	{ 
-    		get { return choirid; } 
-    		set
-    		{
-    			choirid = value;
-    			//OnPropertyChanged("ChoirId");
-    		} 
-    	}
-    
+        public System.Guid Id { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<System.Guid> ChoirId { get; set; }
     
         public virtual Choir Choir { get; set; }
         public virtual ICollection<StudentAttendence> StudentAttendences { get; set; }
