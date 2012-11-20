@@ -24,13 +24,26 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
     BeginNamespace(code);
 #>
 <#=codeStringGenerator.UsingDirectives(inHeader: false)#>
+using System.ComponentModel;
+
 <#=codeStringGenerator.EntityClassOpening(entity)#>
 {
 <#
     var propertiesWithDefaultValues = typeMapper.GetPropertiesWithDefaultValues(entity);
     var collectionNavigationProperties = typeMapper.GetCollectionNavigationProperties(entity);
     var complexProperties = typeMapper.GetComplexProperties(entity);
+#>
+	public event PropertyChangedEventHandler PropertyChanged;
 
+	protected virtual void OnPropertyChanged(string propertyName)
+	{
+        if (PropertyChanged!= null) 
+		{
+			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+
+<#
     if (propertiesWithDefaultValues.Any() || collectionNavigationProperties.Any() || complexProperties.Any())
     {
 #>
@@ -69,7 +82,10 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
         foreach (var edmProperty in simpleProperties)
         {
 #>
+	<#=codeStringGenerator.Private(edmProperty)#>
+
     <#=codeStringGenerator.Property(edmProperty)#>
+
 <#
         }
     }
@@ -82,6 +98,8 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
         foreach(var complexProperty in complexProperties)
         {
 #>
+	<#=codeStringGenerator.Private(complexProperty)#>
+
     <#=codeStringGenerator.Property(complexProperty)#>
 <#
         }
@@ -275,16 +293,31 @@ public class CodeStringGenerator
     }
 
     public string Property(EdmProperty edmProperty)
-    {
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            "{0} {1} {2} {{ {3}get; {4}set; }}",
-            Accessibility.ForProperty(edmProperty),
-            _typeMapper.GetTypeName(edmProperty.TypeUsage),
-            _code.Escape(edmProperty),
-            _code.SpaceAfter(Accessibility.ForGetter(edmProperty)),
-            _code.SpaceAfter(Accessibility.ForSetter(edmProperty)));
-    }
+	{
+		return string.Format(
+			CultureInfo.InvariantCulture,
+			@"{0} {1} {2} 
+	{{ 
+		{3}{6} 
+		{4}{5} 
+	}}",
+			Accessibility.ForProperty(edmProperty),
+			_typeMapper.GetTypeName(edmProperty.TypeUsage),
+			_code.Escape(edmProperty),
+			_code.SpaceAfter(Accessibility.ForGetter(edmProperty)),
+			_code.SpaceAfter(Accessibility.ForSetter(edmProperty)),
+			"set" + Environment.NewLine + "\t\t{" + Environment.NewLine + "\t\t\t" + _code.Escape(edmProperty).ToLower()+" = value;" + Environment.NewLine + "\t\t\t//OnPropertyChanged(\""+_code.Escape(edmProperty)+"\");" + Environment.NewLine + "\t\t}",
+			"get { return "+_code.Escape(edmProperty).ToLower()+"; }");
+	}
+
+	public string Private(EdmProperty edmProperty) {
+		return string.Format(
+			CultureInfo.InvariantCulture,
+			"{0} {1} {2};",
+			"private",
+			_typeMapper.GetTypeName(edmProperty.TypeUsage),
+			_code.Escape(edmProperty).ToLower());
+	}
 
     public string NavigationProperty(NavigationProperty navigationProperty)
     {
@@ -305,16 +338,17 @@ public class CodeStringGenerator
     }
     
     public string EntityClassOpening(EntityType entity)
-    {
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            "{0} {1}partial class {2}{3}",
-            Accessibility.ForType(entity),
-            _code.SpaceAfter(_code.AbstractOption(entity)),
-            _code.Escape(entity),
-            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
-    }
-    
+	{
+		return string.Format(
+			CultureInfo.InvariantCulture,
+			"{0} {1}partial class {2}{3} : {4}",
+			Accessibility.ForType(entity),
+			_code.SpaceAfter(_code.AbstractOption(entity)),
+			_code.Escape(entity),
+			_code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)),
+			"INotifyPropertyChanged");
+	}
+
     public string EnumOpening(SimpleType enumType)
     {
         return string.Format(

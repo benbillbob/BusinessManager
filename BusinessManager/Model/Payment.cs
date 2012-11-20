@@ -12,11 +12,56 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Payment
+    using System.ComponentModel;
+    
+    public partial class Payment : INotifyPropertyChanged
     {
-        public System.Guid Id { get; set; }
-        public Nullable<System.Guid> StudentId { get; set; }
-        public Nullable<decimal> Amount { get; set; }
+    	public event PropertyChangedEventHandler PropertyChanged;
+    
+    	protected virtual void OnPropertyChanged(string propertyName)
+    	{
+            if (PropertyChanged!= null) 
+    		{
+    			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    		}
+    	}
+    
+    	private System.Guid id;
+    
+        public System.Guid Id 
+    	{ 
+    		get { return id; } 
+    		set
+    		{
+    			id = value;
+    			//OnPropertyChanged("Id");
+    		} 
+    	}
+    
+    	private Nullable<System.Guid> studentid;
+    
+        public Nullable<System.Guid> StudentId 
+    	{ 
+    		get { return studentid; } 
+    		set
+    		{
+    			studentid = value;
+    			//OnPropertyChanged("StudentId");
+    		} 
+    	}
+    
+    	private Nullable<decimal> amount;
+    
+        public Nullable<decimal> Amount 
+    	{ 
+    		get { return amount; } 
+    		set
+    		{
+    			amount = value;
+    			//OnPropertyChanged("Amount");
+    		} 
+    	}
+    
     
         public virtual Student Student { get; set; }
     }

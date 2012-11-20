@@ -12,17 +12,62 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    using System.ComponentModel;
+    
+    public partial class Student : INotifyPropertyChanged
     {
+    	public event PropertyChangedEventHandler PropertyChanged;
+    
+    	protected virtual void OnPropertyChanged(string propertyName)
+    	{
+            if (PropertyChanged!= null) 
+    		{
+    			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    		}
+    	}
+    
         public Student()
         {
             this.Payments = new HashSet<Payment>();
             this.StudentAttendences = new HashSet<StudentAttendence>();
         }
     
-        public System.Guid Id { get; set; }
-        public string FirstName { get; set; }
-        public Nullable<System.Guid> ChoirId { get; set; }
+    	private System.Guid id;
+    
+        public System.Guid Id 
+    	{ 
+    		get { return id; } 
+    		set
+    		{
+    			id = value;
+    			//OnPropertyChanged("Id");
+    		} 
+    	}
+    
+    	private string firstname;
+    
+        public string FirstName 
+    	{ 
+    		get { return firstname; } 
+    		set
+    		{
+    			firstname = value;
+    			//OnPropertyChanged("FirstName");
+    		} 
+    	}
+    
+    	private Nullable<System.Guid> choirid;
+    
+        public Nullable<System.Guid> ChoirId 
+    	{ 
+    		get { return choirid; } 
+    		set
+    		{
+    			choirid = value;
+    			//OnPropertyChanged("ChoirId");
+    		} 
+    	}
+    
     
         public virtual Choir Choir { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
