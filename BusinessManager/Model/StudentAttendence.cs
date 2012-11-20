@@ -12,12 +12,68 @@ namespace BusinessManager.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentAttendence
+    using System.ComponentModel;
+    
+    public partial class StudentAttendence : INotifyPropertyChanged
     {
-        public System.Guid Id { get; set; }
-        public Nullable<System.Guid> StudentId { get; set; }
-        public Nullable<System.Guid> RollId { get; set; }
-        public Nullable<bool> Present { get; set; }
+    	public event PropertyChangedEventHandler PropertyChanged;
+    
+    	protected virtual void OnPropertyChanged(string propertyName)
+    	{
+            if (PropertyChanged!= null) 
+    		{
+    			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    		}
+    	}
+    
+    	private System.Guid id;
+    
+        public System.Guid Id 
+    	{ 
+    		get { return id; } 
+    		set
+    		{
+    			id = value;
+    			//OnPropertyChanged("Id");
+    		} 
+    	}
+    
+    	private Nullable<System.Guid> studentid;
+    
+        public Nullable<System.Guid> StudentId 
+    	{ 
+    		get { return studentid; } 
+    		set
+    		{
+    			studentid = value;
+    			//OnPropertyChanged("StudentId");
+    		} 
+    	}
+    
+    	private Nullable<System.Guid> rollid;
+    
+        public Nullable<System.Guid> RollId 
+    	{ 
+    		get { return rollid; } 
+    		set
+    		{
+    			rollid = value;
+    			//OnPropertyChanged("RollId");
+    		} 
+    	}
+    
+    	private Nullable<bool> present;
+    
+        public Nullable<bool> Present 
+    	{ 
+    		get { return present; } 
+    		set
+    		{
+    			present = value;
+    			//OnPropertyChanged("Present");
+    		} 
+    	}
+    
     
         public virtual Roll Roll { get; set; }
         public virtual Student Student { get; set; }
