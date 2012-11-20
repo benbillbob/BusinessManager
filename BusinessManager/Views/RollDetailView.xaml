@@ -36,7 +36,7 @@
 		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Students}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<Button> <!--Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.StudentSelectedCommand}" CommandParameter="{Binding}">-->
+					<Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.StudentToggleCommand}" CommandParameter="{Binding}">
 						<Button.Template>
 							<ControlTemplate TargetType="Button">
 								<ContentPresenter />
@@ -44,6 +44,7 @@
 						</Button.Template>
 						<WrapPanel>
 							<TextBlock Text="{Binding Path=Student.FirstName}" />
+							<CheckBox IsChecked="{Binding Present, Mode=TwoWay}" />
 						</WrapPanel>
 					</Button>
 				</DataTemplate>

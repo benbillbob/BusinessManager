@@ -225,5 +225,24 @@ namespace BusinessManager.ViewModels
 			RemoveStudentsFromRoll();
 			AddStudentsToRoll();
 		}
+
+		public ICommand StudentToggleCommand
+		{
+			get
+			{
+				return new RelayCommand(o =>
+				{
+					var sa = (StudentAttendence)o;
+					if (sa.Present == null)
+					{
+						sa.Present = true;
+					}
+					else
+					{
+						sa.Present = !sa.Present;
+					}
+				});
+			}
+		}
 	}
 }

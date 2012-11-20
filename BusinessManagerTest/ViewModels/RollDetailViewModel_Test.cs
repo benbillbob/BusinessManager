@@ -95,5 +95,27 @@ namespace BusinessManagerTest.ViewModels
 			contextMock.Verify(x => x.AddRoll(It.Is<Roll>(r => r == vm.Roll)), Times.Exactly(1));
 			contextMock.Verify(x => x.AddStudentAttendence(It.Is<StudentAttendence>(r => r == vm.Students.First())), Times.Exactly(1));
 		}
+
+		[Test]
+		public void RollDetailViewModel_StudentToggleCommand()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var contextMock = Mock.Get((DummyEntities)context);
+
+			var choirId = context.Choirs.FirstOrDefault().Id;
+			var studentId = context.Students.FirstOrDefault().Id;
+
+			var roll = vm.Roll;
+			vm.SelectedChoirId = choirId;
+
+			var sa = vm.Students.First();
+			Assert.That(sa.Present, Is.Null);
+
+			vm.StudentToggleCommand.Execute(sa);
+			Assert.That(sa.Present, Is.True);
+
+			vm.StudentToggleCommand.Execute(sa);
+			Assert.That(sa.Present, Is.False);
+		}
 	}
 }
