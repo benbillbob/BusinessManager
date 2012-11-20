@@ -39,7 +39,7 @@ namespace BusinessManager.Model
     		set
     		{
     			id = value;
-    			//OnPropertyChanged("Id");
+    			OnPropertyChanged("Id");
     		} 
     	}
     
@@ -51,7 +51,7 @@ namespace BusinessManager.Model
     		set
     		{
     			date = value;
-    			//OnPropertyChanged("Date");
+    			OnPropertyChanged("Date");
     		} 
     	}
     
@@ -63,7 +63,7 @@ namespace BusinessManager.Model
     		set
     		{
     			choirid = value;
-    			//OnPropertyChanged("ChoirId");
+    			OnPropertyChanged("ChoirId");
     		} 
     	}
     

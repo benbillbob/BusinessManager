@@ -40,7 +40,7 @@ namespace BusinessManager.Model
     		set
     		{
     			id = value;
-    			//OnPropertyChanged("Id");
+    			OnPropertyChanged("Id");
     		} 
     	}
     
@@ -52,7 +52,7 @@ namespace BusinessManager.Model
     		set
     		{
     			name = value;
-    			//OnPropertyChanged("Name");
+    			OnPropertyChanged("Name");
     		} 
     	}
     

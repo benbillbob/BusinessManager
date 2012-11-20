@@ -34,7 +34,7 @@ namespace BusinessManager.Model
     		set
     		{
     			id = value;
-    			//OnPropertyChanged("Id");
+    			OnPropertyChanged("Id");
     		} 
     	}
     
@@ -46,7 +46,7 @@ namespace BusinessManager.Model
     		set
     		{
     			studentid = value;
-    			//OnPropertyChanged("StudentId");
+    			OnPropertyChanged("StudentId");
     		} 
     	}
     
@@ -58,7 +58,7 @@ namespace BusinessManager.Model
     		set
     		{
     			rollid = value;
-    			//OnPropertyChanged("RollId");
+    			OnPropertyChanged("RollId");
     		} 
     	}
     
@@ -70,7 +70,7 @@ namespace BusinessManager.Model
     		set
     		{
     			present = value;
-    			//OnPropertyChanged("Present");
+    			OnPropertyChanged("Present");
     		} 
     	}
     

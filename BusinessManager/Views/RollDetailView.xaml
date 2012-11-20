@@ -42,10 +42,14 @@
 								<ContentPresenter />
 							</ControlTemplate>
 						</Button.Template>
-						<WrapPanel>
-							<TextBlock Text="{Binding Path=Student.FirstName}" />
-							<CheckBox IsChecked="{Binding Present, Mode=TwoWay}" />
-						</WrapPanel>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<TextBlock Grid.Column="0" Text="{Binding Path=Student.FirstName}"/>
+							<CheckBox Grid.Column="1" IsChecked="{Binding Present, Mode=TwoWay}" />
+						</Grid>
 					</Button>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>

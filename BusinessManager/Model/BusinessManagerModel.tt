@@ -306,7 +306,7 @@ public class CodeStringGenerator
 			_code.Escape(edmProperty),
 			_code.SpaceAfter(Accessibility.ForGetter(edmProperty)),
 			_code.SpaceAfter(Accessibility.ForSetter(edmProperty)),
-			"set" + Environment.NewLine + "\t\t{" + Environment.NewLine + "\t\t\t" + _code.Escape(edmProperty).ToLower()+" = value;" + Environment.NewLine + "\t\t\t//OnPropertyChanged(\""+_code.Escape(edmProperty)+"\");" + Environment.NewLine + "\t\t}",
+			"set" + Environment.NewLine + "\t\t{" + Environment.NewLine + "\t\t\t" + _code.Escape(edmProperty).ToLower()+" = value;" + Environment.NewLine + "\t\t\tOnPropertyChanged(\""+_code.Escape(edmProperty)+"\");" + Environment.NewLine + "\t\t}",
 			"get { return "+_code.Escape(edmProperty).ToLower()+"; }");
 	}
 
