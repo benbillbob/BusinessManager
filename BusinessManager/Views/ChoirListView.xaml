@@ -16,8 +16,15 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-        <Button Grid.Row="1" Grid.Column="1" Command="{Binding ChoirAddCommand}">Add</Button>
-        <ItemsControl Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}">
+		<Button Grid.Row="4" Grid.Column="2" Command="{Binding ChoirAddCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Plus.png" Width="64px"/>
+					<TextBlock>Add</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
+		<ItemsControl Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
                     <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ChoirSelectedCommand}" CommandParameter="{Binding}">
@@ -27,7 +34,7 @@
 							</ControlTemplate>
 						</Button.Template>
 						<WrapPanel>
-							<TextBlock Text="{Binding Name}" />
+							<TextBlock Text="{Binding Name}" FontSize="24" />
 						</WrapPanel>
 					</Button>
 				</DataTemplate>

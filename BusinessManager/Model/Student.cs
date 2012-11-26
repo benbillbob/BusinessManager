@@ -68,6 +68,18 @@ namespace BusinessManager.Model
     		} 
     	}
     
+    	private string lastname;
+    
+        public string LastName 
+    	{ 
+    		get { return lastname; } 
+    		set
+    		{
+    			lastname = value;
+    			OnPropertyChanged("LastName");
+    		} 
+    	}
+    
     
         public virtual Choir Choir { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }

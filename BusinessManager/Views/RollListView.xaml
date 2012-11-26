@@ -20,7 +20,14 @@
 		</Grid.RowDefinitions>
 		<Label Grid.Row="0" Grid.Column="0">Choir:</Label>
 		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}"/>
-		<Button Grid.Row="2" Grid.Column="2" Command="{Binding RollAddCommand}">Add</Button>
+		<Button Grid.Row="4" Grid.Column="2" Command="{Binding RollAddCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Plus.png" Width="64px"/>
+					<TextBlock>Add</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
 		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Rolls.View}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
@@ -30,9 +37,15 @@
 								<ContentPresenter />
 							</ControlTemplate>
 						</Button.Template>
-						<WrapPanel>
-							<TextBlock Text="Choir" />
-						</WrapPanel>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto"/>
+								<ColumnDefinition Width="10px"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<TextBlock Text="{Binding Date, StringFormat={}{0:dd/MMM/yyyy}}" Grid.Column="0"/>
+							<TextBlock Text="{Binding Path=Choir.Name}" Grid.Column="2"/>
+						</Grid>
 					</Button>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>

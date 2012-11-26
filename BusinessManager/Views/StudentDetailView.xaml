@@ -15,14 +15,24 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-        <Button Grid.Row="3" Grid.Column="2" Command="{Binding SaveCommand}">Save</Button>
-		<Label Grid.Row="0" Grid.Column="0">FirstName: </Label>
+        <Button Grid.Row="4" Grid.Column="2" Command="{Binding SaveCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Save.png" Width="64px"/>
+					<TextBlock>Save</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
+		<Label Grid.Row="0" Grid.Column="0">FirstName:</Label>
 		<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.FirstName}"></TextBox>
-        <Label Grid.Row="1" Grid.Column="0">Choir:</Label>
-		<ComboBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId, Mode=TwoWay}"/>
+		<Label Grid.Row="1" Grid.Column="0">LastName:</Label>
+		<TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.LastName}"></TextBox>
+		<Label Grid.Row="2" Grid.Column="0">Choir:</Label>
+		<ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId, Mode=TwoWay}"/>
 	</Grid>
 </UserControl>

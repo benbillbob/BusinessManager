@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow">
         <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-		<ScrollViewer x:Name="Navigation" Grid.Column="0" Grid.Row="0"/>
-		<ScrollViewer x:Name="MainView" Grid.Column="1" Grid.Row="0"/>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+		<ContentControl x:Name="Navigation" Grid.Column="0" Grid.Row="0"/>
+		<ContentControl x:Name="MainView" Grid.Column="1" Grid.Row="0"/>
 	</Grid>
 </Window>

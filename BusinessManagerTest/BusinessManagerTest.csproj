@@ -73,6 +73,7 @@
     <Compile Include="Model\DummyEntities.cs" />
     <Compile Include="ViewModels\ChoirDetailViewModel_Test.cs" />
     <Compile Include="ViewModels\ChoirListViewModel_Test.cs" />
+    <Compile Include="ViewModels\RollListViewModel_Test.cs" />
     <Compile Include="ViewModels\NavigationViewModel_Test.cs" />
     <Compile Include="ViewModels\RollDetailViewModel_Test.cs" />
     <Compile Include="ViewModels\StudentListViewModel_Test.cs" />

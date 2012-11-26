@@ -16,8 +16,29 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" Command="{Binding StudentListCommand}">Student List</Button>
-        <Button Grid.Row="1" Grid.Column="0" Command="{Binding ChoirListCommand}">Choir List</Button>
-		<Button Grid.Row="2" Grid.Column="0" Command="{Binding RollListCommand}">Roll List</Button>
+		<Button Grid.Row="0" Grid.Column="0" Command="{Binding ChoirListCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Choir.png" Width="64px"/>
+					<TextBlock>Choirs</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
+		<Button Grid.Row="1" Grid.Column="0" Command="{Binding StudentListCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Users.png" Width="64px"/>
+					<TextBlock>Students</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
+		<Button Grid.Row="2" Grid.Column="0" Command="{Binding RollListCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Accept.png" Width="64px"/>
+					<TextBlock>Rolls</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
 	</Grid>
 </UserControl>

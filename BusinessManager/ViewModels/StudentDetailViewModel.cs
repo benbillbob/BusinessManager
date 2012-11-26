@@ -53,14 +53,17 @@ namespace BusinessManager.ViewModels
 
 		public List<Choir> Choirs
 		{
-			get 
+			get
 			{
 				if (choirs == null)
 				{
-					choirs = Context.Choirs.ToList();
+					choirs = (from c in Context.Choirs
+							  orderby c.Name
+							  select c).ToList();
+					choirs.Insert(0, new Choir());
 				}
 
-				return choirs; 
+				return choirs;
 			}
 		}
 

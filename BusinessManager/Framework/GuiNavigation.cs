@@ -17,30 +17,30 @@ namespace BusinessManager.Framework
 		{
 		}
 
-		ScrollViewer navigationContainer;
+		ContentControl navigationContainer;
 
-		public ScrollViewer NavigationContainer
+		public ContentControl NavigationContainer
 		{
 			get
 			{
 				if (navigationContainer == null)
 				{
-					navigationContainer = (ScrollViewer)Viewer.FindName("Navigation");
+					navigationContainer = (ContentControl)Viewer.FindName("Navigation");
 				}
 				return navigationContainer;
 			}
 			set { navigationContainer = value; }
 		}
 
-		ScrollViewer mainViewContainer;
+		ContentControl mainViewContainer;
 
-		public ScrollViewer MainViewContainer
+		public ContentControl MainViewContainer
 		{
 			get
 			{
 				if (mainViewContainer == null)
 				{
-					mainViewContainer = (ScrollViewer)Viewer.FindName("MainView");
+					mainViewContainer = (ContentControl)Viewer.FindName("MainView");
 				}
 				return mainViewContainer;
 			}

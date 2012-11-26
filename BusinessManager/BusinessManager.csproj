@@ -87,6 +87,7 @@
     <Compile Include="FrameworkInterfaces\IView.cs" />
     <Compile Include="FrameworkInterfaces\IViewModel.cs" />
     <Compile Include="Framework\Container.cs" />
+    <Compile Include="Framework\Converters\BooleanToTickCross.cs" />
     <Compile Include="Framework\DetailViewModel.cs" />
     <Compile Include="Framework\GuiNavigation.cs" />
     <Compile Include="FrameworkInterfaces\INavigation.cs" />
@@ -257,6 +258,12 @@
     <Content Include="BusinessManager.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Plus.png" />
+    <Resource Include="Resources\Save.png" />
+    <Resource Include="Resources\Choir.png" />
+    <Resource Include="Resources\Users.png" />
+    <Resource Include="Resources\Accept.png" />
+    <Resource Include="Resources\Delete.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -280,6 +287,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

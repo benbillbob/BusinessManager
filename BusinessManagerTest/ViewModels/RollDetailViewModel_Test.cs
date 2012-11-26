@@ -25,6 +25,7 @@ namespace BusinessManagerTest.ViewModels
 			contextMock.CallBase = true;
 
 			Container.Current.RegisterInstance(typeof(IBusinessManagerEntities), context);
+
 			vm = new RollDetailViewModel();
 		}
 
@@ -116,6 +117,57 @@ namespace BusinessManagerTest.ViewModels
 
 			vm.StudentToggleCommand.Execute(sa);
 			Assert.That(sa.Present, Is.False);
+		}
+
+		[Test]
+		public void RollDetailViewModel_InitialisesNewRoll()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			Assert.That(vm.Roll.Id, Is.EqualTo(Guid.Empty));
+		}
+
+		[Test]
+		public void RollDetailViewModel_FindsExistingRoll()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var testRoll = context.Rolls.FirstOrDefault();
+			vm.Id = testRoll.Id;
+
+			Assert.That(vm.Roll, Is.EqualTo(testRoll));
+		}
+
+		[Test]
+		public void RollDetailViewModel_FindsExistingRollWithChoir()
+		{
+			var context = Container.Current.Resolve<IBusinessManagerEntities>();
+			var testRoll = context.Rolls.Where(x => x.ChoirId != null && x.ChoirId != Guid.NewGuid()).FirstOrDefault();
+
+			Assert.That(testRoll, Is.Not.Null);
+			vm.Id = testRoll.Id;
+			
+			Assert.That(vm.Roll, Is.EqualTo(testRoll));
+			Assert.That(vm.Roll.ChoirId, Is.Not.EqualTo(Guid.NewGuid()));
+		}
+
+		[Test]
+		public void RollDetailViewModel_Choirs()
+		{
+			var choirs = vm.Choirs;
+			Assert.That(choirs.Count(), Is.EqualTo(3));
+		}
+
+		[Test]
+		public void RollDetailViewModel_ChoirSelectionIsNotReadOnlyWHenUnsaved()
+		{
+			Assert.That(vm.ChoirSelectionReadOnly, Is.False);
+		}
+
+		[Test]
+		public void RollDetailViewModel_ChoirSelectionIsReadOnlyWhenSaved()
+		{
+			vm.Roll.Id = Guid.NewGuid();
+
+			Assert.That(vm.ChoirSelectionReadOnly, Is.True);
 		}
 	}
 }

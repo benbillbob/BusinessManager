@@ -16,17 +16,24 @@ namespace BusinessManager.Model
             var control = (from c in context.Controls
                            select c).FirstOrDefault();
 
-            if (control == null)
+			var students = new string[]{"Ben Woodcock", "Nat Woodcock", "Fred Durst", "Jimmy Dorantee", "Daniel Payne", "David Leader", "John Deeves"}.ToList();
+			if (control == null)
             {
-                var s = new Student();
-                s.Id = Guid.NewGuid();
-                s.FirstName = "Ben";
-                context.AddStudent(s);
+				var c = new Choir();
+				c.Id = Guid.NewGuid();
+				c.Name = "ChoirA";
+				context.AddChoir(c);
 
-                var c = new Choir();
-                c.Id = Guid.NewGuid();
-                c.Name = "ChoirA";
-                context.AddChoir(c);
+				students.ForEach(n =>
+				{
+					var s = new Student();
+					s.Id = Guid.NewGuid();
+					var names = n.Split(' ');
+					s.FirstName = names[0];
+					s.LastName = names[1];
+					s.ChoirId = c.Id;
+					context.AddStudent(s);
+				});
 
                 c = new Choir();
                 c.Id = Guid.NewGuid();

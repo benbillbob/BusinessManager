@@ -44,6 +44,12 @@ namespace BusinessManagerTest.ViewModels
 		}
 
 		[Test]
+		public void MainMenuViewModel_RollListCommand()
+		{
+			TestHelpers.NavigationTest("RollListView", "RollListViewModel", vm.RollListCommand);
+		}
+
+		[Test]
 		public void MainMenuViewModel_IsFullScreenReturnsTrue()
 		{
 			Assert.That(vm.IsFullScreen(), Is.True);

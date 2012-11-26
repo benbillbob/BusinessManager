@@ -15,6 +15,8 @@ public class DummyEntities : IBusinessManagerEntities
 		choirA = new Choir() { Id = choirAID, Name = "ChoirA", Students = (from s in Students where s.ChoirId == choirAID select s).ToList() };
 		choirB = new Choir() { Id = choirBID, Name = "ChoirB", Students = (from s in Students where s.ChoirId == choirBID select s).ToList() };
 		studentA.Choir = choirA;
+		rollA = new Roll() { Id = Guid.NewGuid() };
+		rollB = new Roll() { Id = Guid.NewGuid(), ChoirId = choirA.Id };
 	}
 
 	Guid choirAID;
@@ -23,11 +25,13 @@ public class DummyEntities : IBusinessManagerEntities
 	Choir choirB;
 	Student studentA;
 	Student studentB;
+	Roll rollA;
+	Roll rollB;
 
-	public IEnumerable<Student> Students { get { return new List<Student>() { studentA, studentB }; } }
+	public IEnumerable<Student> Students { get { return new List<Student>() { studentA }; } }
 	public IEnumerable<Choir> Choirs { get { return new List<Choir>() { choirA, choirB }; } }
 	public IEnumerable<Control> Controls { get { return new List<Control>() { }; } }
-	public IEnumerable<Roll> Rolls { get { return new List<Roll>() { }; } }
+	public IEnumerable<Roll> Rolls { get { return new List<Roll>() { rollA, rollB }; } }
 	public IEnumerable<StudentAttendence> StudentAttendences { get { return new List<StudentAttendence>() { }; } }
 
 	public virtual int Save()

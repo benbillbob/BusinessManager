@@ -22,6 +22,7 @@ namespace BusinessManager.ViewModels
 	{
 		public RollDetailViewModel()
 		{
+			PropertyChanged += ChoirSelected;
 		}
 
 		void ChoirSelected(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -30,8 +31,6 @@ namespace BusinessManager.ViewModels
 			{
 				Roll.ChoirId = SelectedChoirId;
 				UpdateRoll();
-				//OnPropertyChanged("Students");
-				//CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Students));
 			}
 		}
 
@@ -59,7 +58,6 @@ namespace BusinessManager.ViewModels
 				if (roll == null)
 				{
 					roll = new Roll();
-					PropertyChanged += ChoirSelected;
 				}
 
 				return roll;
@@ -76,6 +74,7 @@ namespace BusinessManager.ViewModels
 				{
 					var q = from s in Context.StudentAttendences
 							where s.RollId == Roll.Id
+							orderby s.Student.LastName
 							select s;
 
 					students = new ObservableCollection<StudentAttendence>(q.ToList());
@@ -93,7 +92,9 @@ namespace BusinessManager.ViewModels
 			{
 				if (choirs == null)
 				{
-					choirs = Context.Choirs.ToList();
+					choirs = (from c in Context.Choirs
+							  orderby c.Name
+							  select c).ToList();
 					choirs.Insert(0, new Choir());
 				}
 
@@ -111,17 +112,17 @@ namespace BusinessManager.ViewModels
 					{
 						Roll.Id = Guid.NewGuid();
 						Context.AddRoll(Roll);
+					}
 
-						foreach (var s in Students)
+					foreach (var s in Students)
+					{
+						if (s.Id == Guid.Empty)
 						{
-							if (s.Id == Guid.Empty)
-							{
-								s.Id = Guid.NewGuid();
-								Context.AddStudentAttendence(s);
-							}
-
-							s.RollId = Roll.Id;
+							s.Id = Guid.NewGuid();
+							Context.AddStudentAttendence(s);
 						}
+
+						s.RollId = Roll.Id;
 					}
 
 					Context.Save();

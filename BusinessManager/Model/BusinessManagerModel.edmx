@@ -69,6 +69,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
           <Property Name="ChoirId" Type="uniqueidentifier" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="StudentAttendence">
           <Key>
@@ -190,6 +191,7 @@
           <NavigationProperty Name="Choir" Relationship="BusinessManager.Model.StudentChoir" FromRole="Student" ToRole="Choir" />
           <NavigationProperty Name="Payments" Relationship="BusinessManager.Model.PaymentStudent" FromRole="Student" ToRole="Payment" />
           <NavigationProperty Name="StudentAttendences" Relationship="BusinessManager.Model.StudentRoll" FromRole="Student" ToRole="StudentAttendence" />
+          <Property Type="String" Name="LastName" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="StudentChoir">
           <End Type="BusinessManager.Model.Choir" Role="Choir" Multiplicity="0..1" />
@@ -304,6 +306,7 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="BusinessManager.Model.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="ChoirId" ColumnName="ChoirId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

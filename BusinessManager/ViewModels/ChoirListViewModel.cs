@@ -30,6 +30,7 @@ namespace BusinessManager.ViewModels
 					var context = Container.Current.Resolve<IBusinessManagerEntities>();
                     var db = context.Choirs;
 					var q = from c in db
+							orderby c.Name
 							select c;
 
                     choirs = q.ToList();

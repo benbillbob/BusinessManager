@@ -31,6 +31,7 @@ namespace BusinessManager.ViewModels
 					students = new CollectionViewSource();
 					students.Source = StudentsInternal;
 					students.Filter += students_Filter;
+					students.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastName", System.ComponentModel.ListSortDirection.Ascending));
 					PropertyChanged += StudentListViewModel_SelectedChoirIdPropertyChanged;
 				}
 
@@ -110,6 +111,7 @@ namespace BusinessManager.ViewModels
 				{
 					var context = Container.Current.Resolve<IBusinessManagerEntities>();
 					var q = from c in context.Choirs
+							orderby c.Name
 							select c;
 
 					choirs = q.ToList();

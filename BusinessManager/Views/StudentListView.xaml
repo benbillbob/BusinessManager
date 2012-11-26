@@ -20,7 +20,14 @@
 		</Grid.RowDefinitions>
 		<Label Grid.Row="0" Grid.Column="0">Choir:</Label>
 		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}"/>
-		<Button Grid.Row="2" Grid.Column="2" Command="{Binding StudentAddCommand}">Add</Button>
+		<Button Grid.Row="4" Grid.Column="2" Command="{Binding StudentAddCommand}">
+			<Button.Content>
+				<StackPanel>
+					<Image Source="/BusinessManager;component/Resources/Plus.png" Width="64px"/>
+					<TextBlock>Add</TextBlock>
+				</StackPanel>
+			</Button.Content>
+		</Button>
 		<ItemsControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Students.View}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
@@ -31,7 +38,14 @@
 							</ControlTemplate>
 						</Button.Template>
 						<WrapPanel>
-							<TextBlock Text="{Binding FirstName}" />
+							<TextBlock x:Name="FirstName" Grid.Column="1" FontSize="24">
+								<TextBlock.Text>
+									<MultiBinding StringFormat="{}{0} {1}">
+										<Binding Path="FirstName" />
+										<Binding Path="LastName"/>
+									</MultiBinding>
+								</TextBlock.Text>
+							</TextBlock>
 						</WrapPanel>
 					</Button>
 				</DataTemplate>
