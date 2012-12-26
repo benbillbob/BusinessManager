@@ -31,5 +31,7 @@ namespace BusinessManager.Model
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Roll> Rolls { get; set; }
         public DbSet<StudentAttendence> StudentAttendences { get; set; }
+        public DbSet<Artist> Artists { get; set; }
+        public DbSet<SheetMusic> SheetMusics { get; set; }
     }
 }

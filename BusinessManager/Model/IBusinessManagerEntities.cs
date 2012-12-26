@@ -9,6 +9,7 @@ namespace BusinessManager.Model
 	{
 		IEnumerable<Student> Students { get; }
 		IEnumerable<Choir> Choirs { get; }
+		IEnumerable<Artist> Artists { get; }
 		IEnumerable<Control> Controls { get; }
 		IEnumerable<Roll> Rolls { get; }
 		IEnumerable<StudentAttendence> StudentAttendences { get; }
@@ -16,6 +17,7 @@ namespace BusinessManager.Model
 		int Save();
 		void AddStudent(Student student);
 		void AddChoir(Choir choir);
+		void AddArtist(Artist artist);
 		void AddControl(Control control);
 		void AddStudentAttendence(StudentAttendence studentAttendence);
 		void AddRoll(Roll roll);
@@ -43,6 +45,11 @@ namespace BusinessManager.Model
 			Rolls.Add(roll);
 		}
 
+		public void AddArtist(Artist artist)
+		{
+			Artists.Add(artist);
+		}
+
 		public void AddStudentAttendence(StudentAttendence studentAttendence)
 		{
 			StudentAttendences.Add(studentAttendence);
@@ -51,6 +58,11 @@ namespace BusinessManager.Model
 		IEnumerable<Student> IBusinessManagerEntities.Students
 		{
 			get { return Students; }
+		}
+
+		IEnumerable<Artist> IBusinessManagerEntities.Artists
+		{
+			get { return Artists; }
 		}
 
 		IEnumerable<Roll> IBusinessManagerEntities.Rolls

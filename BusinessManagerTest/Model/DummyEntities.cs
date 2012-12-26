@@ -33,6 +33,8 @@ public class DummyEntities : IBusinessManagerEntities
 	public IEnumerable<Control> Controls { get { return new List<Control>() { }; } }
 	public IEnumerable<Roll> Rolls { get { return new List<Roll>() { rollA, rollB }; } }
 	public IEnumerable<StudentAttendence> StudentAttendences { get { return new List<StudentAttendence>() { }; } }
+	public IEnumerable<Artist> Artists { get { return new List<Artist>() { }; } }
+	public IEnumerable<SheetMusic> SheetMusic { get { return new List<SheetMusic>() { }; } }
 
 	public virtual int Save()
 	{

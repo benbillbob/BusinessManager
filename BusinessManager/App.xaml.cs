@@ -50,6 +50,10 @@ namespace BusinessManager
 			Container.Current.RegisterType(typeof(IViewModel), typeof(StudentListViewModel), "StudentListViewModel");
 			Container.Current.RegisterType(typeof(IView), typeof(StudentDetailView), "StudentDetailView");
 			Container.Current.RegisterType(typeof(IViewModel), typeof(StudentDetailViewModel), "StudentDetailViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(ArtistListView), "ArtistListView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(ArtistListViewModel), "ArtistListViewModel");
+			Container.Current.RegisterType(typeof(IView), typeof(ArtistDetailView), "ArtistDetailView");
+			Container.Current.RegisterType(typeof(IViewModel), typeof(ArtistDetailViewModel), "ArtistDetailViewModel");
 			Container.Current.RegisterType(typeof(IView), typeof(RollListView), "RollListView");
 			Container.Current.RegisterType(typeof(IViewModel), typeof(RollListViewModel), "RollListViewModel");
 			Container.Current.RegisterType(typeof(IView), typeof(RollDetailView), "RollDetailView");

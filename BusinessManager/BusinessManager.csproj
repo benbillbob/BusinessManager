@@ -93,6 +93,9 @@
     <Compile Include="FrameworkInterfaces\INavigation.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
     <Compile Include="Framework\ViewModel.cs" />
+    <Compile Include="Model\Artist.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\BusinessManagerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +125,9 @@
     <Compile Include="Model\Roll.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\SheetMusic.cs">
+      <DependentUpon>BusinessManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Student.cs">
       <DependentUpon>BusinessManagerModel.tt</DependentUpon>
     </Compile>
@@ -130,6 +136,8 @@
     </Compile>
     <Compile Include="ViewModels\ChoirDetailViewModel.cs" />
     <Compile Include="ViewModels\ChoirListViewModel.cs" />
+    <Compile Include="ViewModels\ArtistDetailViewModel.cs" />
+    <Compile Include="ViewModels\ArtistListViewModel.cs" />
     <Compile Include="ViewModels\RollDetailViewModel.cs" />
     <Compile Include="ViewModels\RollListViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
@@ -141,6 +149,12 @@
     </Compile>
     <Compile Include="Views\ChoirListView.xaml.cs">
       <DependentUpon>ChoirListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ArtistListView.xaml.cs">
+      <DependentUpon>ArtistListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ArtistDetailView.xaml.cs">
+      <DependentUpon>ArtistDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RollDetailView.xaml.cs">
       <DependentUpon>RollDetailView.xaml</DependentUpon>
@@ -177,6 +191,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ChoirListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ArtistListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ArtistDetailView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
