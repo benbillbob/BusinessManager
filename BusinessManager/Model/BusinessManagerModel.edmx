@@ -4,53 +4,80 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BusinessManager.Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="BusinessManager.Model.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0">
         <EntityContainer Name="BusinessManagerModelStoreContainer">
+          <EntitySet Name="Artist" EntityType="BusinessManager.Model.Store.Artist" store:Type="Tables" />
           <EntitySet Name="Choir" EntityType="BusinessManager.Model.Store.Choir" store:Type="Tables" />
           <EntitySet Name="Control" EntityType="BusinessManager.Model.Store.Control" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="BusinessManager.Model.Store.Payments" store:Type="Tables" />
           <EntitySet Name="Roll" EntityType="BusinessManager.Model.Store.Roll" store:Type="Tables" />
+          <EntitySet Name="SheetMusic" EntityType="BusinessManager.Model.Store.SheetMusic" store:Type="Tables" />
+          <EntitySet Name="SheetMusicArtist" EntityType="BusinessManager.Model.Store.SheetMusicArtist" store:Type="Tables" />
+          <EntitySet Name="SheetMusicComposer" EntityType="BusinessManager.Model.Store.SheetMusicComposer" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="BusinessManager.Model.Store.Student" store:Type="Tables" />
           <EntitySet Name="StudentAttendence" EntityType="BusinessManager.Model.Store.StudentAttendence" store:Type="Tables" />
+          <AssociationSet Name="ArtistSheetMiscArtist" Association="BusinessManager.Model.Store.ArtistSheetMiscArtist">
+            <End EntitySet="Artist" Role="Artist" />
+            <End EntitySet="SheetMusicArtist" Role="SheetMusicArtist" />
+          </AssociationSet>
           <AssociationSet Name="ChoirRoll" Association="BusinessManager.Model.Store.ChoirRoll">
-            <End Role="Choir" EntitySet="Choir" />
-            <End Role="Roll" EntitySet="Roll" />
+            <End EntitySet="Choir" Role="Choir" />
+            <End EntitySet="Roll" Role="Roll" />
+          </AssociationSet>
+          <AssociationSet Name="ComposerSheetMusicComposer" Association="BusinessManager.Model.Store.ComposerSheetMusicComposer">
+            <End EntitySet="Artist" Role="Artist" />
+            <End EntitySet="SheetMusicComposer" Role="SheetMusicComposer" />
           </AssociationSet>
           <AssociationSet Name="PaymentStudent" Association="BusinessManager.Model.Store.PaymentStudent">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Payments" EntitySet="Payments" />
+            <End EntitySet="Student" Role="Student" />
+            <End EntitySet="Payments" Role="Payments" />
           </AssociationSet>
           <AssociationSet Name="RollAttendence" Association="BusinessManager.Model.Store.RollAttendence">
-            <End Role="Roll" EntitySet="Roll" />
-            <End Role="StudentAttendence" EntitySet="StudentAttendence" />
+            <End EntitySet="Roll" Role="Roll" />
+            <End EntitySet="StudentAttendence" Role="StudentAttendence" />
+          </AssociationSet>
+          <AssociationSet Name="SheetMusicSheetMusicArtist" Association="BusinessManager.Model.Store.SheetMusicSheetMusicArtist">
+            <End EntitySet="SheetMusic" Role="SheetMusic" />
+            <End EntitySet="SheetMusicArtist" Role="SheetMusicArtist" />
+          </AssociationSet>
+          <AssociationSet Name="SheetMusicSheetMusicComposer" Association="BusinessManager.Model.Store.SheetMusicSheetMusicComposer">
+            <End EntitySet="SheetMusic" Role="SheetMusic" />
+            <End EntitySet="SheetMusicComposer" Role="SheetMusicComposer" />
           </AssociationSet>
           <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.Store.StudentChoir">
-            <End Role="Choir" EntitySet="Choir" />
-            <End Role="Student" EntitySet="Student" />
+            <End EntitySet="Choir" Role="Choir" />
+            <End EntitySet="Student" Role="Student" />
           </AssociationSet>
           <AssociationSet Name="StudentRoll" Association="BusinessManager.Model.Store.StudentRoll">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="StudentAttendence" EntitySet="StudentAttendence" />
+            <End EntitySet="Student" Role="Student" />
+            <End EntitySet="StudentAttendence" Role="StudentAttendence" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Name" MaxLength="100" Type="nvarchar" />
+        </EntityType>
         <EntityType Name="Choir">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Name" MaxLength="100" Type="nvarchar" />
         </EntityType>
         <EntityType Name="Control">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Payments">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
           <Property Name="StudentId" Type="uniqueidentifier" />
           <Property Name="Amount" Type="money" />
         </EntityType>
@@ -58,31 +85,68 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
           <Property Name="Date" Type="datetime" />
           <Property Name="ChoirId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="SheetMusic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Title" MaxLength="100" Type="nvarchar" />
+          <Property Name="IsOriginal" Nullable="false" Type="bit" />
+          <Property Name="Copies" Type="numeric" />
+        </EntityType>
+        <EntityType Name="SheetMusicArtist">
+          <Key>
+            <PropertyRef Name="ArtistId" />
+            <PropertyRef Name="SheetMusicId" />
+          </Key>
+          <Property Name="ArtistId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="SheetMusicId" Nullable="false" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="SheetMusicComposer">
+          <Key>
+            <PropertyRef Name="SheetMusicId" />
+            <PropertyRef Name="ArtistId" />
+          </Key>
+          <Property Name="SheetMusicId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ArtistId" Nullable="false" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="FirstName" MaxLength="100" Type="nvarchar" />
           <Property Name="ChoirId" Type="uniqueidentifier" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" MaxLength="100" Type="nvarchar" />
         </EntityType>
         <EntityType Name="StudentAttendence">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
           <Property Name="StudentId" Type="uniqueidentifier" />
           <Property Name="RollId" Type="uniqueidentifier" />
           <Property Name="Present" Type="bit" />
         </EntityType>
+        <Association Name="ArtistSheetMiscArtist">
+          <End Type="BusinessManager.Model.Store.Artist" Multiplicity="1" Role="Artist" />
+          <End Type="BusinessManager.Model.Store.SheetMusicArtist" Multiplicity="*" Role="SheetMusicArtist" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SheetMusicArtist">
+              <PropertyRef Name="ArtistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ChoirRoll">
-          <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
-          <End Role="Roll" Type="BusinessManager.Model.Store.Roll" Multiplicity="*" />
+          <End Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" Role="Choir" />
+          <End Type="BusinessManager.Model.Store.Roll" Multiplicity="*" Role="Roll" />
           <ReferentialConstraint>
             <Principal Role="Choir">
               <PropertyRef Name="Id" />
@@ -92,9 +156,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ComposerSheetMusicComposer">
+          <End Type="BusinessManager.Model.Store.Artist" Multiplicity="1" Role="Artist" />
+          <End Type="BusinessManager.Model.Store.SheetMusicComposer" Multiplicity="*" Role="SheetMusicComposer" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SheetMusicComposer">
+              <PropertyRef Name="ArtistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PaymentStudent">
-          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" />
-          <End Role="Payments" Type="BusinessManager.Model.Store.Payments" Multiplicity="*" />
+          <End Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" Role="Student" />
+          <End Type="BusinessManager.Model.Store.Payments" Multiplicity="*" Role="Payments" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
@@ -105,8 +181,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="RollAttendence">
-          <End Role="Roll" Type="BusinessManager.Model.Store.Roll" Multiplicity="0..1" />
-          <End Role="StudentAttendence" Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" />
+          <End Type="BusinessManager.Model.Store.Roll" Multiplicity="0..1" Role="Roll" />
+          <End Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" Role="StudentAttendence" />
           <ReferentialConstraint>
             <Principal Role="Roll">
               <PropertyRef Name="Id" />
@@ -116,9 +192,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="SheetMusicSheetMusicArtist">
+          <End Type="BusinessManager.Model.Store.SheetMusic" Multiplicity="1" Role="SheetMusic" />
+          <End Type="BusinessManager.Model.Store.SheetMusicArtist" Multiplicity="*" Role="SheetMusicArtist" />
+          <ReferentialConstraint>
+            <Principal Role="SheetMusic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SheetMusicArtist">
+              <PropertyRef Name="SheetMusicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SheetMusicSheetMusicComposer">
+          <End Type="BusinessManager.Model.Store.SheetMusic" Multiplicity="1" Role="SheetMusic" />
+          <End Type="BusinessManager.Model.Store.SheetMusicComposer" Multiplicity="*" Role="SheetMusicComposer" />
+          <ReferentialConstraint>
+            <Principal Role="SheetMusic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SheetMusicComposer">
+              <PropertyRef Name="SheetMusicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="StudentChoir">
-          <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
-          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="*" />
+          <End Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" Role="Choir" />
+          <End Type="BusinessManager.Model.Store.Student" Multiplicity="*" Role="Student" />
           <ReferentialConstraint>
             <Principal Role="Choir">
               <PropertyRef Name="Id" />
@@ -129,8 +229,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="StudentRoll">
-          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" />
-          <End Role="StudentAttendence" Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" />
+          <End Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" Role="Student" />
+          <End Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" Role="StudentAttendence" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
@@ -170,6 +270,16 @@
           <AssociationSet Name="StudentRoll" Association="BusinessManager.Model.StudentRoll">
             <End Role="Student" EntitySet="Students" />
             <End Role="StudentAttendence" EntitySet="StudentAttendences" />
+          </AssociationSet>
+          <EntitySet Name="Artists" EntityType="BusinessManager.Model.Artist" />
+          <EntitySet Name="SheetMusics" EntityType="BusinessManager.Model.SheetMusic" />
+          <AssociationSet Name="SheetMusicArtist1" Association="BusinessManager.Model.SheetMusicArtist1">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="SheetMusic" EntitySet="SheetMusics" />
+          </AssociationSet>
+          <AssociationSet Name="SheetMusicComposer" Association="BusinessManager.Model.SheetMusicComposer">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="SheetMusic" EntitySet="SheetMusics" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Choir">
@@ -289,6 +399,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PerformedSheetMusics" Relationship="BusinessManager.Model.SheetMusicArtist1" FromRole="Artist" ToRole="SheetMusic" />
+          <NavigationProperty Name="ComposedSheetMusics" Relationship="BusinessManager.Model.SheetMusicComposer" FromRole="Artist" ToRole="SheetMusic" />
+        </EntityType>
+        <EntityType Name="SheetMusic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsOriginal" Nullable="false" />
+          <Property Type="Decimal" Name="Copies" Precision="18" Scale="0" />
+          <NavigationProperty Name="Artists" Relationship="BusinessManager.Model.SheetMusicArtist1" FromRole="SheetMusic" ToRole="Artist" />
+          <NavigationProperty Name="Composers" Relationship="BusinessManager.Model.SheetMusicComposer" FromRole="SheetMusic" ToRole="Artist" />
+        </EntityType>
+        <Association Name="SheetMusicArtist1">
+          <End Type="BusinessManager.Model.Artist" Role="Artist" Multiplicity="*" />
+          <End Type="BusinessManager.Model.SheetMusic" Role="SheetMusic" Multiplicity="*" />
+        </Association>
+        <Association Name="SheetMusicComposer">
+          <End Type="BusinessManager.Model.Artist" Role="Artist" Multiplicity="*" />
+          <End Type="BusinessManager.Model.SheetMusic" Role="SheetMusic" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -348,6 +486,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Artists">
+            <EntityTypeMapping TypeName="BusinessManager.Model.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SheetMusics">
+            <EntityTypeMapping TypeName="BusinessManager.Model.SheetMusic">
+              <MappingFragment StoreEntitySet="SheetMusic">
+                <ScalarProperty Name="Copies" ColumnName="Copies" />
+                <ScalarProperty Name="IsOriginal" ColumnName="IsOriginal" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="SheetMusicArtist1" TypeName="BusinessManager.Model.SheetMusicArtist1" StoreEntitySet="SheetMusicArtist">
+            <EndProperty Name="SheetMusic">
+              <ScalarProperty Name="Id" ColumnName="SheetMusicId" />
+            </EndProperty>
+            <EndProperty Name="Artist">
+              <ScalarProperty Name="Id" ColumnName="ArtistId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SheetMusicComposer" TypeName="BusinessManager.Model.SheetMusicComposer" StoreEntitySet="SheetMusicComposer">
+            <EndProperty Name="SheetMusic">
+              <ScalarProperty Name="Id" ColumnName="SheetMusicId" />
+            </EndProperty>
+            <EndProperty Name="Artist">
+              <ScalarProperty Name="Id" ColumnName="ArtistId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
