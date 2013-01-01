@@ -65,4 +65,9 @@ public class DummyEntities : IBusinessManagerEntities
 	{
 		((List<Roll>)Rolls).Add(roll);
 	}
+
+	public void AddArtist(Artist artist)
+	{
+		((List<Artist>)Artists).Add(artist);
+	}
 }
