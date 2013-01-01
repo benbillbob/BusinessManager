@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="BusinessManager.Model.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0">
+    <Schema Namespace="BusinessManager.Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BusinessManagerModelStoreContainer">
           <EntitySet Name="Artist" EntityType="BusinessManager.Model.Store.Artist" store:Type="Tables" />
           <EntitySet Name="Choir" EntityType="BusinessManager.Model.Store.Choir" store:Type="Tables" />
@@ -17,67 +17,67 @@
           <EntitySet Name="Student" EntityType="BusinessManager.Model.Store.Student" store:Type="Tables" />
           <EntitySet Name="StudentAttendence" EntityType="BusinessManager.Model.Store.StudentAttendence" store:Type="Tables" />
           <AssociationSet Name="ArtistSheetMiscArtist" Association="BusinessManager.Model.Store.ArtistSheetMiscArtist">
-            <End EntitySet="Artist" Role="Artist" />
-            <End EntitySet="SheetMusicArtist" Role="SheetMusicArtist" />
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="SheetMusicArtist" EntitySet="SheetMusicArtist" />
           </AssociationSet>
           <AssociationSet Name="ChoirRoll" Association="BusinessManager.Model.Store.ChoirRoll">
-            <End EntitySet="Choir" Role="Choir" />
-            <End EntitySet="Roll" Role="Roll" />
+            <End Role="Choir" EntitySet="Choir" />
+            <End Role="Roll" EntitySet="Roll" />
           </AssociationSet>
           <AssociationSet Name="ComposerSheetMusicComposer" Association="BusinessManager.Model.Store.ComposerSheetMusicComposer">
-            <End EntitySet="Artist" Role="Artist" />
-            <End EntitySet="SheetMusicComposer" Role="SheetMusicComposer" />
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="SheetMusicComposer" EntitySet="SheetMusicComposer" />
           </AssociationSet>
           <AssociationSet Name="PaymentStudent" Association="BusinessManager.Model.Store.PaymentStudent">
-            <End EntitySet="Student" Role="Student" />
-            <End EntitySet="Payments" Role="Payments" />
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
           <AssociationSet Name="RollAttendence" Association="BusinessManager.Model.Store.RollAttendence">
-            <End EntitySet="Roll" Role="Roll" />
-            <End EntitySet="StudentAttendence" Role="StudentAttendence" />
+            <End Role="Roll" EntitySet="Roll" />
+            <End Role="StudentAttendence" EntitySet="StudentAttendence" />
           </AssociationSet>
           <AssociationSet Name="SheetMusicSheetMusicArtist" Association="BusinessManager.Model.Store.SheetMusicSheetMusicArtist">
-            <End EntitySet="SheetMusic" Role="SheetMusic" />
-            <End EntitySet="SheetMusicArtist" Role="SheetMusicArtist" />
+            <End Role="SheetMusic" EntitySet="SheetMusic" />
+            <End Role="SheetMusicArtist" EntitySet="SheetMusicArtist" />
           </AssociationSet>
           <AssociationSet Name="SheetMusicSheetMusicComposer" Association="BusinessManager.Model.Store.SheetMusicSheetMusicComposer">
-            <End EntitySet="SheetMusic" Role="SheetMusic" />
-            <End EntitySet="SheetMusicComposer" Role="SheetMusicComposer" />
+            <End Role="SheetMusic" EntitySet="SheetMusic" />
+            <End Role="SheetMusicComposer" EntitySet="SheetMusicComposer" />
           </AssociationSet>
           <AssociationSet Name="StudentChoir" Association="BusinessManager.Model.Store.StudentChoir">
-            <End EntitySet="Choir" Role="Choir" />
-            <End EntitySet="Student" Role="Student" />
+            <End Role="Choir" EntitySet="Choir" />
+            <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="StudentRoll" Association="BusinessManager.Model.Store.StudentRoll">
-            <End EntitySet="Student" Role="Student" />
-            <End EntitySet="StudentAttendence" Role="StudentAttendence" />
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentAttendence" EntitySet="StudentAttendence" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Artist">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
-          <Property Name="Name" MaxLength="100" Type="nvarchar" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Choir">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
-          <Property Name="Name" MaxLength="100" Type="nvarchar" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Control">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Payments">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StudentId" Type="uniqueidentifier" />
           <Property Name="Amount" Type="money" />
         </EntityType>
@@ -85,7 +85,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Date" Type="datetime" />
           <Property Name="ChoirId" Type="uniqueidentifier" />
         </EntityType>
@@ -93,9 +93,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
-          <Property Name="Title" MaxLength="100" Type="nvarchar" />
-          <Property Name="IsOriginal" Nullable="false" Type="bit" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsOriginal" Type="bit" Nullable="false" />
           <Property Name="Copies" Type="numeric" />
         </EntityType>
         <EntityType Name="SheetMusicArtist">
@@ -103,38 +103,67 @@
             <PropertyRef Name="ArtistId" />
             <PropertyRef Name="SheetMusicId" />
           </Key>
-          <Property Name="ArtistId" Nullable="false" Type="uniqueidentifier" />
-          <Property Name="SheetMusicId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="ArtistId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SheetMusicId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="SheetMusicComposer">
           <Key>
             <PropertyRef Name="SheetMusicId" />
             <PropertyRef Name="ArtistId" />
           </Key>
-          <Property Name="SheetMusicId" Nullable="false" Type="uniqueidentifier" />
-          <Property Name="ArtistId" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="SheetMusicId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArtistId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
-          <Property Name="FirstName" MaxLength="100" Type="nvarchar" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
           <Property Name="ChoirId" Type="uniqueidentifier" />
-          <Property Name="LastName" MaxLength="100" Type="nvarchar" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Age" Type="numeric" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="100" />
+          <Property Name="School" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentFirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentLastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Postcode" Type="numeric" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="WorkPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShirtSize" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact1Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact1HomePhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact1WorkPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact1MobilePhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact2Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact2HomePhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact2WorkPhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact2MobilePhone" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact2Relationship" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmergencyContact1RelationShip" Type="nvarchar" MaxLength="100" />
+          <Property Name="SpecialNeeds" Type="nvarchar" MaxLength="500" />
+          <Property Name="MusicalExperience" Type="nvarchar" MaxLength="500" />
+          <Property Name="Advertisement" Type="nvarchar" MaxLength="500" />
+          <Property Name="AuditionComments" Type="nvarchar" MaxLength="500" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="StudentAttendence">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StudentId" Type="uniqueidentifier" />
           <Property Name="RollId" Type="uniqueidentifier" />
           <Property Name="Present" Type="bit" />
         </EntityType>
         <Association Name="ArtistSheetMiscArtist">
-          <End Type="BusinessManager.Model.Store.Artist" Multiplicity="1" Role="Artist" />
-          <End Type="BusinessManager.Model.Store.SheetMusicArtist" Multiplicity="*" Role="SheetMusicArtist" />
+          <End Role="Artist" Type="BusinessManager.Model.Store.Artist" Multiplicity="1" />
+          <End Role="SheetMusicArtist" Type="BusinessManager.Model.Store.SheetMusicArtist" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Artist">
               <PropertyRef Name="Id" />
@@ -145,8 +174,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ChoirRoll">
-          <End Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" Role="Choir" />
-          <End Type="BusinessManager.Model.Store.Roll" Multiplicity="*" Role="Roll" />
+          <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
+          <End Role="Roll" Type="BusinessManager.Model.Store.Roll" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Choir">
               <PropertyRef Name="Id" />
@@ -157,8 +186,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ComposerSheetMusicComposer">
-          <End Type="BusinessManager.Model.Store.Artist" Multiplicity="1" Role="Artist" />
-          <End Type="BusinessManager.Model.Store.SheetMusicComposer" Multiplicity="*" Role="SheetMusicComposer" />
+          <End Role="Artist" Type="BusinessManager.Model.Store.Artist" Multiplicity="1" />
+          <End Role="SheetMusicComposer" Type="BusinessManager.Model.Store.SheetMusicComposer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Artist">
               <PropertyRef Name="Id" />
@@ -169,8 +198,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PaymentStudent">
-          <End Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" Role="Student" />
-          <End Type="BusinessManager.Model.Store.Payments" Multiplicity="*" Role="Payments" />
+          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" />
+          <End Role="Payments" Type="BusinessManager.Model.Store.Payments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
@@ -181,8 +210,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="RollAttendence">
-          <End Type="BusinessManager.Model.Store.Roll" Multiplicity="0..1" Role="Roll" />
-          <End Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" Role="StudentAttendence" />
+          <End Role="Roll" Type="BusinessManager.Model.Store.Roll" Multiplicity="0..1" />
+          <End Role="StudentAttendence" Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roll">
               <PropertyRef Name="Id" />
@@ -193,8 +222,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SheetMusicSheetMusicArtist">
-          <End Type="BusinessManager.Model.Store.SheetMusic" Multiplicity="1" Role="SheetMusic" />
-          <End Type="BusinessManager.Model.Store.SheetMusicArtist" Multiplicity="*" Role="SheetMusicArtist" />
+          <End Role="SheetMusic" Type="BusinessManager.Model.Store.SheetMusic" Multiplicity="1" />
+          <End Role="SheetMusicArtist" Type="BusinessManager.Model.Store.SheetMusicArtist" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SheetMusic">
               <PropertyRef Name="Id" />
@@ -205,8 +234,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="SheetMusicSheetMusicComposer">
-          <End Type="BusinessManager.Model.Store.SheetMusic" Multiplicity="1" Role="SheetMusic" />
-          <End Type="BusinessManager.Model.Store.SheetMusicComposer" Multiplicity="*" Role="SheetMusicComposer" />
+          <End Role="SheetMusic" Type="BusinessManager.Model.Store.SheetMusic" Multiplicity="1" />
+          <End Role="SheetMusicComposer" Type="BusinessManager.Model.Store.SheetMusicComposer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SheetMusic">
               <PropertyRef Name="Id" />
@@ -217,8 +246,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="StudentChoir">
-          <End Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" Role="Choir" />
-          <End Type="BusinessManager.Model.Store.Student" Multiplicity="*" Role="Student" />
+          <End Role="Choir" Type="BusinessManager.Model.Store.Choir" Multiplicity="0..1" />
+          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Choir">
               <PropertyRef Name="Id" />
@@ -229,8 +258,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="StudentRoll">
-          <End Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" Role="Student" />
-          <End Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" Role="StudentAttendence" />
+          <End Role="Student" Type="BusinessManager.Model.Store.Student" Multiplicity="0..1" />
+          <End Role="StudentAttendence" Type="BusinessManager.Model.Store.StudentAttendence" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
@@ -302,6 +331,35 @@
           <NavigationProperty Name="Payments" Relationship="BusinessManager.Model.PaymentStudent" FromRole="Student" ToRole="Payment" />
           <NavigationProperty Name="StudentAttendences" Relationship="BusinessManager.Model.StudentRoll" FromRole="Student" ToRole="StudentAttendence" />
           <Property Type="String" Name="LastName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DOB" Precision="3" />
+          <Property Type="Decimal" Name="Age" Precision="18" Scale="0" />
+          <Property Type="String" Name="Sex" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="School" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParentFirstName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParentLastName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Postcode" Precision="18" Scale="0" />
+          <Property Type="String" Name="City" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HomePhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobilePhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WorkPhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShirtSize" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact1Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact1HomePhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact1WorkPhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact1MobilePhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact2Name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact2HomePhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact2WorkPhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact2MobilePhone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact2Relationship" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact1RelationShip" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SpecialNeeds" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MusicalExperience" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Advertisement" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuditionComments" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comments" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="StudentChoir">
           <End Type="BusinessManager.Model.Choir" Role="Choir" Multiplicity="0..1" />
@@ -444,6 +502,35 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="BusinessManager.Model.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AuditionComments" ColumnName="AuditionComments" />
+                <ScalarProperty Name="Advertisement" ColumnName="Advertisement" />
+                <ScalarProperty Name="MusicalExperience" ColumnName="MusicalExperience" />
+                <ScalarProperty Name="SpecialNeeds" ColumnName="SpecialNeeds" />
+                <ScalarProperty Name="EmergencyContact1RelationShip" ColumnName="EmergencyContact1RelationShip" />
+                <ScalarProperty Name="EmergencyContact2Relationship" ColumnName="EmergencyContact2Relationship" />
+                <ScalarProperty Name="EmergencyContact2MobilePhone" ColumnName="EmergencyContact2MobilePhone" />
+                <ScalarProperty Name="EmergencyContact2WorkPhone" ColumnName="EmergencyContact2WorkPhone" />
+                <ScalarProperty Name="EmergencyContact2HomePhone" ColumnName="EmergencyContact2HomePhone" />
+                <ScalarProperty Name="EmergencyContact2Name" ColumnName="EmergencyContact2Name" />
+                <ScalarProperty Name="EmergencyContact1MobilePhone" ColumnName="EmergencyContact1MobilePhone" />
+                <ScalarProperty Name="EmergencyContact1WorkPhone" ColumnName="EmergencyContact1WorkPhone" />
+                <ScalarProperty Name="EmergencyContact1HomePhone" ColumnName="EmergencyContact1HomePhone" />
+                <ScalarProperty Name="EmergencyContact1Name" ColumnName="EmergencyContact1Name" />
+                <ScalarProperty Name="ShirtSize" ColumnName="ShirtSize" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ParentLastName" ColumnName="ParentLastName" />
+                <ScalarProperty Name="ParentFirstName" ColumnName="ParentFirstName" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="ChoirId" ColumnName="ChoirId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

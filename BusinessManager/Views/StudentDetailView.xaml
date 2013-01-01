@@ -5,34 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 			 mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto"/>
-			<ColumnDefinition Width="*"/>
-			<ColumnDefinition Width="Auto"/>
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-		</Grid.RowDefinitions>
-        <Button Grid.Row="4" Grid.Column="2" Command="{Binding SaveCommand}">
-			<Button.Content>
+             d:DesignHeight="800" d:DesignWidth="800">
+	<DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<UniformGrid Columns="2">
+				<Label>FirstName:</Label>
+				<TextBox Text="{Binding Path=Student.FirstName}"></TextBox>
+				<Label>LastName:</Label>
+				<TextBox Text="{Binding Path=Student.LastName}"></TextBox>
+				<Label>Choir:</Label>
+				<ComboBox ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId, Mode=TwoWay}"/>
+				<Label>DOB:</Label>
+				<DatePicker SelectedDate="{Binding Student.DOB, Mode=TwoWay}"/>
+				<Label>Sex:</Label>
+				<TextBox Text="{Binding Path=Student.Sex}"></TextBox>
+				<Label>School:</Label>
+				<TextBox Text="{Binding Path=Student.School}"></TextBox>
+				<Label>Parent First Name:</Label>
+				<TextBox Text="{Binding Path=Student.ParentFirstName}"></TextBox>
+				<Label>Parent Last Name:</Label>
+				<TextBox Text="{Binding Path=Student.ParentLastName}"></TextBox>
+			</UniformGrid>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Bottom">
+			<Button Command="{Binding SaveCommand}">
 				<StackPanel>
 					<Image Source="/BusinessManager;component/Resources/Save.png" Width="64px"/>
-					<TextBlock>Save</TextBlock>
+					<TextBlock><Run Text="Save"/></TextBlock>
 				</StackPanel>
-			</Button.Content>
-		</Button>
-		<Label Grid.Row="0" Grid.Column="0">FirstName:</Label>
-		<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.FirstName}"></TextBox>
-		<Label Grid.Row="1" Grid.Column="0">LastName:</Label>
-		<TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Path=Student.LastName}"></TextBox>
-		<Label Grid.Row="2" Grid.Column="0">Choir:</Label>
-		<ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Student.ChoirId, Mode=TwoWay}"/>
-	</Grid>
+			</Button>
+		</DockPanel>
+	</DockPanel>
 </UserControl>

@@ -80,6 +80,354 @@ namespace BusinessManager.Model
     		} 
     	}
     
+    	private Nullable<System.DateTime> dob;
+    
+        public Nullable<System.DateTime> DOB 
+    	{ 
+    		get { return dob; } 
+    		set
+    		{
+    			dob = value;
+    			OnPropertyChanged("DOB");
+    		} 
+    	}
+    
+    	private Nullable<decimal> age;
+    
+        public Nullable<decimal> Age 
+    	{ 
+    		get { return age; } 
+    		set
+    		{
+    			age = value;
+    			OnPropertyChanged("Age");
+    		} 
+    	}
+    
+    	private string sex;
+    
+        public string Sex 
+    	{ 
+    		get { return sex; } 
+    		set
+    		{
+    			sex = value;
+    			OnPropertyChanged("Sex");
+    		} 
+    	}
+    
+    	private string school;
+    
+        public string School 
+    	{ 
+    		get { return school; } 
+    		set
+    		{
+    			school = value;
+    			OnPropertyChanged("School");
+    		} 
+    	}
+    
+    	private string parentfirstname;
+    
+        public string ParentFirstName 
+    	{ 
+    		get { return parentfirstname; } 
+    		set
+    		{
+    			parentfirstname = value;
+    			OnPropertyChanged("ParentFirstName");
+    		} 
+    	}
+    
+    	private string parentlastname;
+    
+        public string ParentLastName 
+    	{ 
+    		get { return parentlastname; } 
+    		set
+    		{
+    			parentlastname = value;
+    			OnPropertyChanged("ParentLastName");
+    		} 
+    	}
+    
+    	private string address;
+    
+        public string Address 
+    	{ 
+    		get { return address; } 
+    		set
+    		{
+    			address = value;
+    			OnPropertyChanged("Address");
+    		} 
+    	}
+    
+    	private Nullable<decimal> postcode;
+    
+        public Nullable<decimal> Postcode 
+    	{ 
+    		get { return postcode; } 
+    		set
+    		{
+    			postcode = value;
+    			OnPropertyChanged("Postcode");
+    		} 
+    	}
+    
+    	private string city;
+    
+        public string City 
+    	{ 
+    		get { return city; } 
+    		set
+    		{
+    			city = value;
+    			OnPropertyChanged("City");
+    		} 
+    	}
+    
+    	private string email;
+    
+        public string Email 
+    	{ 
+    		get { return email; } 
+    		set
+    		{
+    			email = value;
+    			OnPropertyChanged("Email");
+    		} 
+    	}
+    
+    	private string homephone;
+    
+        public string HomePhone 
+    	{ 
+    		get { return homephone; } 
+    		set
+    		{
+    			homephone = value;
+    			OnPropertyChanged("HomePhone");
+    		} 
+    	}
+    
+    	private string mobilephone;
+    
+        public string MobilePhone 
+    	{ 
+    		get { return mobilephone; } 
+    		set
+    		{
+    			mobilephone = value;
+    			OnPropertyChanged("MobilePhone");
+    		} 
+    	}
+    
+    	private string workphone;
+    
+        public string WorkPhone 
+    	{ 
+    		get { return workphone; } 
+    		set
+    		{
+    			workphone = value;
+    			OnPropertyChanged("WorkPhone");
+    		} 
+    	}
+    
+    	private string shirtsize;
+    
+        public string ShirtSize 
+    	{ 
+    		get { return shirtsize; } 
+    		set
+    		{
+    			shirtsize = value;
+    			OnPropertyChanged("ShirtSize");
+    		} 
+    	}
+    
+    	private string emergencycontact1name;
+    
+        public string EmergencyContact1Name 
+    	{ 
+    		get { return emergencycontact1name; } 
+    		set
+    		{
+    			emergencycontact1name = value;
+    			OnPropertyChanged("EmergencyContact1Name");
+    		} 
+    	}
+    
+    	private string emergencycontact1homephone;
+    
+        public string EmergencyContact1HomePhone 
+    	{ 
+    		get { return emergencycontact1homephone; } 
+    		set
+    		{
+    			emergencycontact1homephone = value;
+    			OnPropertyChanged("EmergencyContact1HomePhone");
+    		} 
+    	}
+    
+    	private string emergencycontact1workphone;
+    
+        public string EmergencyContact1WorkPhone 
+    	{ 
+    		get { return emergencycontact1workphone; } 
+    		set
+    		{
+    			emergencycontact1workphone = value;
+    			OnPropertyChanged("EmergencyContact1WorkPhone");
+    		} 
+    	}
+    
+    	private string emergencycontact1mobilephone;
+    
+        public string EmergencyContact1MobilePhone 
+    	{ 
+    		get { return emergencycontact1mobilephone; } 
+    		set
+    		{
+    			emergencycontact1mobilephone = value;
+    			OnPropertyChanged("EmergencyContact1MobilePhone");
+    		} 
+    	}
+    
+    	private string emergencycontact2name;
+    
+        public string EmergencyContact2Name 
+    	{ 
+    		get { return emergencycontact2name; } 
+    		set
+    		{
+    			emergencycontact2name = value;
+    			OnPropertyChanged("EmergencyContact2Name");
+    		} 
+    	}
+    
+    	private string emergencycontact2homephone;
+    
+        public string EmergencyContact2HomePhone 
+    	{ 
+    		get { return emergencycontact2homephone; } 
+    		set
+    		{
+    			emergencycontact2homephone = value;
+    			OnPropertyChanged("EmergencyContact2HomePhone");
+    		} 
+    	}
+    
+    	private string emergencycontact2workphone;
+    
+        public string EmergencyContact2WorkPhone 
+    	{ 
+    		get { return emergencycontact2workphone; } 
+    		set
+    		{
+    			emergencycontact2workphone = value;
+    			OnPropertyChanged("EmergencyContact2WorkPhone");
+    		} 
+    	}
+    
+    	private string emergencycontact2mobilephone;
+    
+        public string EmergencyContact2MobilePhone 
+    	{ 
+    		get { return emergencycontact2mobilephone; } 
+    		set
+    		{
+    			emergencycontact2mobilephone = value;
+    			OnPropertyChanged("EmergencyContact2MobilePhone");
+    		} 
+    	}
+    
+    	private string emergencycontact2relationship;
+    
+        public string EmergencyContact2Relationship 
+    	{ 
+    		get { return emergencycontact2relationship; } 
+    		set
+    		{
+    			emergencycontact2relationship = value;
+    			OnPropertyChanged("EmergencyContact2Relationship");
+    		} 
+    	}
+    
+    	private string emergencycontact1relationship;
+    
+        public string EmergencyContact1RelationShip 
+    	{ 
+    		get { return emergencycontact1relationship; } 
+    		set
+    		{
+    			emergencycontact1relationship = value;
+    			OnPropertyChanged("EmergencyContact1RelationShip");
+    		} 
+    	}
+    
+    	private string specialneeds;
+    
+        public string SpecialNeeds 
+    	{ 
+    		get { return specialneeds; } 
+    		set
+    		{
+    			specialneeds = value;
+    			OnPropertyChanged("SpecialNeeds");
+    		} 
+    	}
+    
+    	private string musicalexperience;
+    
+        public string MusicalExperience 
+    	{ 
+    		get { return musicalexperience; } 
+    		set
+    		{
+    			musicalexperience = value;
+    			OnPropertyChanged("MusicalExperience");
+    		} 
+    	}
+    
+    	private string advertisement;
+    
+        public string Advertisement 
+    	{ 
+    		get { return advertisement; } 
+    		set
+    		{
+    			advertisement = value;
+    			OnPropertyChanged("Advertisement");
+    		} 
+    	}
+    
+    	private string auditioncomments;
+    
+        public string AuditionComments 
+    	{ 
+    		get { return auditioncomments; } 
+    		set
+    		{
+    			auditioncomments = value;
+    			OnPropertyChanged("AuditionComments");
+    		} 
+    	}
+    
+    	private string comments;
+    
+        public string Comments 
+    	{ 
+    		get { return comments; } 
+    		set
+    		{
+    			comments = value;
+    			OnPropertyChanged("Comments");
+    		} 
+    	}
+    
     
         public virtual Choir Choir { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
