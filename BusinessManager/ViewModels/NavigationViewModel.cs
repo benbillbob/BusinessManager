@@ -24,6 +24,7 @@ namespace BusinessManager.ViewModels
 		public ICommand ChoirListCommand { get { return navigationCommand("ChoirListView", "ChoirListViewModel"); } }
 		public ICommand RollListCommand { get { return navigationCommand("RollListView", "RollListViewModel"); } }
 		public ICommand ArtistListCommand { get { return navigationCommand("ArtistListView", "ArtistListViewModel"); } }
+		public ICommand SheetMusicListCommand { get { return navigationCommand("SheetMusicListView", "SheetMusicListViewModel"); } }
 
 		RelayCommand navigationCommand(string view, string vm)
 		{

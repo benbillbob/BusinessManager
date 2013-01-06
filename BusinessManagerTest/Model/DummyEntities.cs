@@ -34,7 +34,7 @@ public class DummyEntities : IBusinessManagerEntities
 	public IEnumerable<Roll> Rolls { get { return new List<Roll>() { rollA, rollB }; } }
 	public IEnumerable<StudentAttendence> StudentAttendences { get { return new List<StudentAttendence>() { }; } }
 	public IEnumerable<Artist> Artists { get { return new List<Artist>() { }; } }
-	public IEnumerable<SheetMusic> SheetMusic { get { return new List<SheetMusic>() { }; } }
+	public IEnumerable<SheetMusic> SheetMusics { get { return new List<SheetMusic>() { }; } }
 
 	public virtual int Save()
 	{
@@ -69,5 +69,10 @@ public class DummyEntities : IBusinessManagerEntities
 	public void AddArtist(Artist artist)
 	{
 		((List<Artist>)Artists).Add(artist);
+	}
+
+	public void AddSheetMusic(SheetMusic sheetMusic)
+	{
+		((List<SheetMusic>)SheetMusics).Add(sheetMusic);
 	}
 }

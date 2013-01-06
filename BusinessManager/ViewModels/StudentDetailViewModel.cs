@@ -49,6 +49,23 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
+		public Guid? SelectedChoirId
+		{
+			get { return Student.ChoirId; }
+			set 
+			{
+				var id = (Guid)value;
+				if (id == Guid.Empty)
+				{
+					Student.ChoirId = null;
+				}
+				else
+				{
+					Student.ChoirId = value;
+				}
+			}
+		}
+
 		List<Choir> choirs;
 
 		public List<Choir> Choirs

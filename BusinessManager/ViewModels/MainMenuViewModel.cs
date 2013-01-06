@@ -14,46 +14,18 @@ namespace BusinessManager.ViewModels
 {
 	public class MainMenuViewModel : ViewModel
 	{
-		public ICommand StudentListCommand
+		public ICommand HomeCommand { get { return navigationCommand("MainMenuView", "MainMenuViewModel"); } }
+		public ICommand StudentListCommand { get { return navigationCommand("StudentListView", "StudentListViewModel"); } }
+		public ICommand ChoirListCommand { get { return navigationCommand("ChoirListView", "ChoirListViewModel"); } }
+		public ICommand RollListCommand { get { return navigationCommand("RollListView", "RollListViewModel"); } }
+		public ICommand ArtistListCommand { get { return navigationCommand("ArtistListView", "ArtistListViewModel"); } }
+
+		RelayCommand navigationCommand(string view, string vm)
 		{
-			get 
+			return new RelayCommand(_ =>
 			{
-				return new RelayCommand(_ => 
-				{
-					var view = Container.Current.Resolve<IView>("StudentListView");
-					var vm = Container.Current.Resolve<IViewModel>("StudentListViewModel");
-
-					Navigation.Show(view, vm); 
-				});
-			}
-		}
-    
-        public ICommand ChoirListCommand
-        {
-            get
-            {
-                return new RelayCommand(_ =>
-                {
-                    var view = Container.Current.Resolve<IView>("ChoirListView");
-                    var vm = Container.Current.Resolve<IViewModel>("ChoirListViewModel");
-
-                    Navigation.Show(view, vm);
-                });
-            }
-        }
-
-		public ICommand RollListCommand
-		{
-			get
-			{
-				return new RelayCommand(_ =>
-				{
-					var view = Container.Current.Resolve<IView>("RollListView");
-					var vm = Container.Current.Resolve<IViewModel>("RollListViewModel");
-
-					Navigation.Show(view, vm);
-				});
-			}
+				Navigation.Show(Container.Current.Resolve<IView>(view), Container.Current.Resolve<IViewModel>(vm));
+			});
 		}
 
 		public override bool IsFullScreen() { return true; } 

@@ -12,6 +12,7 @@ namespace BusinessManager.Model
 		IEnumerable<Artist> Artists { get; }
 		IEnumerable<Control> Controls { get; }
 		IEnumerable<Roll> Rolls { get; }
+		IEnumerable<SheetMusic> SheetMusics { get; }
 		IEnumerable<StudentAttendence> StudentAttendences { get; }
 
 		int Save();
@@ -21,6 +22,7 @@ namespace BusinessManager.Model
 		void AddControl(Control control);
 		void AddStudentAttendence(StudentAttendence studentAttendence);
 		void AddRoll(Roll roll);
+		void AddSheetMusic(SheetMusic sheetMusic);
 	}
 
 	public partial class BusinessManagerEntities : IBusinessManagerEntities
@@ -48,6 +50,11 @@ namespace BusinessManager.Model
 		public void AddArtist(Artist artist)
 		{
 			Artists.Add(artist);
+		}
+
+		public void AddSheetMusic(SheetMusic sheetMusic)
+		{
+			SheetMusics.Add(sheetMusic);
 		}
 
 		public void AddStudentAttendence(StudentAttendence studentAttendence)
@@ -83,6 +90,11 @@ namespace BusinessManager.Model
 		IEnumerable<StudentAttendence> IBusinessManagerEntities.StudentAttendences
 		{
 			get { return StudentAttendences; }
+		}
+
+		IEnumerable<SheetMusic> IBusinessManagerEntities.SheetMusics
+		{
+			get { return SheetMusics; }
 		}
 
 		public virtual int Save()

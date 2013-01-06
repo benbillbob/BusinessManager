@@ -1,69 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BusinessManager.Controls
 {
-	/// <summary>
-	/// Interaction logic for LabeledControl.xaml
-	/// </summary>
-	public partial class LabeledTextBox : UserControl, INotifyPropertyChanged
+	public partial class LabeledTextBox : UserControl
 	{
 		public LabeledTextBox()
 		{
 			InitializeComponent();
 		}
 
-		public static readonly DependencyProperty LabelProperty = DependencyProperty.Register("Label", typeof(string), typeof(LabeledTextBox), new FrameworkPropertyMetadata("Label"));
-
-		public string Label
+		public String Label
 		{
-			get 
-			{ 
-				return ((string)(base.GetValue(LabeledTextBox.LabelProperty))); 
-			}
-			set 
-			{
-				base.SetValue(LabeledTextBox.LabelProperty, value);
-				OnPropertyChanged("Label");
-			}
+			get { return (String)GetValue(LabelProperty); }
+			set { SetValue(LabelProperty, value); }
 		}
 
-		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(string), typeof(LabeledTextBox), new FrameworkPropertyMetadata("Value"));
+		public static readonly DependencyProperty LabelProperty = DependencyProperty.Register("Label", typeof(string), typeof(LabeledTextBox), new PropertyMetadata(null));
 
-		public string Value
+		public String Value
 		{
-			get 
-			{ 
-				return ((string)(base.GetValue(LabeledTextBox.ValueProperty))); 
-			}
-			set 
-			{
-				base.SetValue(LabeledTextBox.ValueProperty, value);
-				OnPropertyChanged("Value");
-			}
+			get { return (String)GetValue(ValueProperty); }
+			set { SetValue(ValueProperty, value); }
 		}
 
-		void OnPropertyChanged(string property)
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(property));
-			}
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
+		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(string), typeof(LabeledTextBox), new PropertyMetadata(null));
 	}
 }

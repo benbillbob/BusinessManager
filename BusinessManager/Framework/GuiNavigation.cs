@@ -70,6 +70,7 @@ namespace BusinessManager.Framework
 		public void Show(IView view, IViewModel vm)
 		{
 			((UserControl)view).DataContext = vm;
+
 			MainViewContainer.Content = view;
 			if (vm.IsFullScreen())
 			{
@@ -79,6 +80,22 @@ namespace BusinessManager.Framework
 			{
 				NavigationContainer.Visibility = Visibility.Visible;
 			}
+		}
+
+		public void ShowPopup(IView view, IViewModel vm)
+		{
+			((UserControl)view).DataContext = vm;
+			var popup = new Window();
+			var mainWindowMainViewContainer = MainViewContainer;
+			var mainWindowNavigationContainer = NavigationContainer;
+
+			MainViewContainer = popup;
+			NavigationContainer = new ContentControl();
+			popup.Content = view;
+			popup.ShowDialog();
+
+			MainViewContainer = mainWindowMainViewContainer;
+			NavigationContainer = mainWindowNavigationContainer;
 		}
 	}
 }

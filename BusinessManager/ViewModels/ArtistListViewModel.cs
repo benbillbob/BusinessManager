@@ -17,7 +17,7 @@ using Microsoft.Practices.Unity;
 
 namespace BusinessManager.ViewModels
 {
-	public class ArtistListViewModel : ViewModel
+	public class ArtistListViewModel : ViewModel, IListViewModel
 	{
         List<Artist> artists;
 
@@ -40,19 +40,30 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
-        public ICommand ArtistSelectedCommand
+		ICommand selectedCommand;
+		
+		public ICommand SelectedCommand
 		{
 			get
 			{
-				return new RelayCommand(c =>
+				if (selectedCommand == null)
 				{
-                    var view = Container.Current.Resolve<IView>("ArtistDetailView");
-                    var vm = Container.Current.Resolve<IViewModel>("ArtistDetailViewModel");
+					selectedCommand = new RelayCommand(c =>
+					{
+						var view = Container.Current.Resolve<IView>("ArtistDetailView");
+						var vm = Container.Current.Resolve<IViewModel>("ArtistDetailViewModel");
 
-                    ((IDetailViewModel)vm).Id = ((Artist)c).Id;
+						((IDetailViewModel)vm).Id = ((Artist)c).Id;
 
-					Navigation.Show(view, vm);
-				});
+						Navigation.Show(view, vm);
+					});
+				}
+
+				return selectedCommand;
+			}
+			set
+			{
+				selectedCommand = value;
 			}
 		}
 
@@ -69,6 +80,5 @@ namespace BusinessManager.ViewModels
                 });
             }
         }
-
     }
 }

@@ -87,11 +87,12 @@
     <Compile Include="Controls\LabeledTextBox.xaml.cs">
       <DependentUpon>LabeledTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FrameworkInterfaces\IListViewModel.cs" />
     <Compile Include="FrameworkInterfaces\IView.cs" />
     <Compile Include="FrameworkInterfaces\IViewModel.cs" />
     <Compile Include="Framework\Container.cs" />
     <Compile Include="Framework\Converters\BooleanToTickCross.cs" />
-    <Compile Include="Framework\DetailViewModel.cs" />
+    <Compile Include="FrameworkInterfaces\IDetailViewModel.cs" />
     <Compile Include="Framework\GuiNavigation.cs" />
     <Compile Include="FrameworkInterfaces\INavigation.cs" />
     <Compile Include="Framework\RelayCommand.cs" />
@@ -141,9 +142,11 @@
     <Compile Include="ViewModels\ChoirListViewModel.cs" />
     <Compile Include="ViewModels\ArtistDetailViewModel.cs" />
     <Compile Include="ViewModels\ArtistListViewModel.cs" />
+    <Compile Include="ViewModels\SheetMusicDetailViewModel.cs" />
     <Compile Include="ViewModels\RollDetailViewModel.cs" />
     <Compile Include="ViewModels\RollListViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\SheetMusicListViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
@@ -158,6 +161,12 @@
     </Compile>
     <Compile Include="Views\ArtistDetailView.xaml.cs">
       <DependentUpon>ArtistDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SheetMusicListView.xaml.cs">
+      <DependentUpon>SheetMusicListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SheetMusicDetailView.xaml.cs">
+      <DependentUpon>SheetMusicDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RollDetailView.xaml.cs">
       <DependentUpon>RollDetailView.xaml</DependentUpon>
@@ -206,6 +215,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ArtistDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SheetMusicListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SheetMusicDetailView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

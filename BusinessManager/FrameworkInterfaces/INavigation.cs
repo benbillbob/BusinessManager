@@ -14,6 +14,7 @@ namespace BusinessManager.FrameworkInterfaces
 	public interface INavigation
 	{
 		void Show(IView view, IViewModel vm);
+		void ShowPopup(IView view, IViewModel vm);
 	}
 
 	public static class Navigation
