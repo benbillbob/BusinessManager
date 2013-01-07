@@ -186,6 +186,9 @@
     <Compile Include="Views\StudentListView.xaml.cs">
       <DependentUpon>StudentListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\LabeledTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +253,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -288,6 +295,17 @@
       <LastGenOutput>BusinessManagerModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BusinessManager.Model.Artist.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.BusinessManagerEntities.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.Choir.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.Control.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.DemoData.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.IBusinessManagerEntities.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.Payment.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.Roll.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.SheetMusic.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.Student.datasource" />
+    <None Include="Properties\DataSources\BusinessManager.Model.StudentAttendence.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

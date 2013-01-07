@@ -150,6 +150,10 @@ namespace BusinessManager.ViewModels
 			{
 				return new RelayCommand(_ =>
 				{
+					if (SelectedPerformer != null)
+					{
+						SheetMusic.Artists.Remove(SelectedPerformer);
+					}
 				});
 			}
 		}
@@ -182,6 +186,10 @@ namespace BusinessManager.ViewModels
 			{
 				return new RelayCommand(_ =>
 				{
+					if (SelectedComposer != null)
+					{
+						SheetMusic.Composers.Remove(SelectedComposer);
+					}
 				});
 			}
 		}
