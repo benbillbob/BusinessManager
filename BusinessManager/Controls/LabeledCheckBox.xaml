@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="BusinessManager.Controls.LabeledTextBox"
+﻿<UserControl x:Class="BusinessManager.Controls.LabeledCheckBox"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
 			 d:DesignWidth="300" 
 			 xmlns:local="clr-namespace:BusinessManager.Controls">
 	<DockPanel>
-		<Label Content="{Binding Label, RelativeSource={RelativeSource AncestorType={x:Type local:LabeledTextBox}}}" />
-		<TextBox Text="{Binding Value, RelativeSource={RelativeSource AncestorType={x:Type local:LabeledTextBox}}}" />
+		<Label Content="{Binding Label, RelativeSource={RelativeSource AncestorType={x:Type local:LabeledCheckBox}}}" />
+		<CheckBox IsChecked="{Binding Value, RelativeSource={RelativeSource AncestorType={x:Type local:LabeledCheckBox}}}" />
 	</DockPanel>
 </UserControl>

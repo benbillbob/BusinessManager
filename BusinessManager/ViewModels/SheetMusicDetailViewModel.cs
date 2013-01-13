@@ -19,6 +19,38 @@ namespace BusinessManager.ViewModels
 {
 	public class SheetMusicDetailViewModel : ViewModel, IDetailViewModel
 	{
+		public SheetMusicDetailViewModel()
+		{
+		}
+
+		void Composers_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			ArtistCollectionChanged(SheetMusic.Composers, e);
+		}
+
+		void Artists_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			ArtistCollectionChanged(SheetMusic.Artists, e);
+		}
+
+		void ArtistCollectionChanged(ICollection<Artist> collection, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+			{
+				foreach (var a in e.NewItems)
+				{
+					collection.Add((Artist)a);
+				}
+			}
+			else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+			{
+				foreach (var a in e.OldItems)
+				{
+					collection.Remove((Artist)a);
+				}
+			}
+		}
+		
 		IBusinessManagerEntities context;
 
 		IBusinessManagerEntities Context
@@ -43,10 +75,50 @@ namespace BusinessManager.ViewModels
                 if (sheetMusic == null)
 				{
 					sheetMusic = new SheetMusic();
+					Artists.CollectionChanged += Artists_CollectionChanged;
+					Composers.CollectionChanged += Composers_CollectionChanged;
 				}
 
                 return sheetMusic;
 			}
+			private set
+			{
+				sheetMusic = value;
+				Artists.CollectionChanged += Artists_CollectionChanged;
+				Composers.CollectionChanged += Composers_CollectionChanged;
+			}
+		}
+
+		ObservableCollection<Artist> artists;
+
+		public ObservableCollection<Artist> Artists
+		{
+			get 
+			{
+				if (artists == null)
+				{
+					artists = new ObservableCollection<Artist>(SheetMusic.Artists.ToArray());
+				}
+
+				return artists; 
+			}
+			set { artists = value; }
+		}
+
+		ObservableCollection<Artist> composers;
+
+		public ObservableCollection<Artist> Composers
+		{
+			get
+			{
+				if (composers == null)
+				{
+					composers = new ObservableCollection<Artist>(SheetMusic.Composers.ToArray());
+				}
+
+				return composers;
+			}
+			set { composers = value; }
 		}
 
 		public ICommand SaveCommand
@@ -90,7 +162,7 @@ namespace BusinessManager.ViewModels
 				return new RelayCommand(a => 
 				{
 					SelectedPerformer = (Artist)a;
-				}); ; 
+				}); 
 			}
 		}
 
@@ -117,7 +189,7 @@ namespace BusinessManager.ViewModels
 			{
 				return new RelayCommand(a =>
 				{
-					SelectedPerformer = (Artist)a;
+					SelectedComposer = (Artist)a;
 				});
 			}
 		}
@@ -130,8 +202,10 @@ namespace BusinessManager.ViewModels
 				{
 					var artistSelectedCommand = new RelayCommand(c =>
 					{
-						SheetMusic.Artists.Add((Artist)c);
-						OnPropertyChanged("SheetMusic.Artists");
+						if (!Artists.Contains((Artist)(c)))
+						{
+							Artists.Add((Artist)c);
+						}
 					});
 
 					var view = Container.Current.Resolve<IView>("ArtistListView");
@@ -152,7 +226,7 @@ namespace BusinessManager.ViewModels
 				{
 					if (SelectedPerformer != null)
 					{
-						SheetMusic.Artists.Remove(SelectedPerformer);
+						Artists.Remove(SelectedPerformer);
 					}
 				});
 			}
@@ -166,8 +240,10 @@ namespace BusinessManager.ViewModels
 				{
 					var artistSelectedCommand = new RelayCommand(c =>
 					{
-						SheetMusic.Artists.Add((Artist)c);
-						OnPropertyChanged("SheetMusic.Artists");
+						if (!Composers.Contains((Artist)c))
+						{
+							Composers.Add((Artist)c);
+						}
 					});
 
 					var view = Container.Current.Resolve<IView>("ArtistListView");
@@ -188,7 +264,7 @@ namespace BusinessManager.ViewModels
 				{
 					if (SelectedComposer != null)
 					{
-						SheetMusic.Composers.Remove(SelectedComposer);
+						Composers.Remove(SelectedComposer);
 					}
 				});
 			}
@@ -203,7 +279,7 @@ namespace BusinessManager.ViewModels
 						where c.Id == value
 						select c;
 
-                sheetMusic = q.FirstOrDefault();
+                SheetMusic = q.FirstOrDefault();
 			}
 		}
 	}

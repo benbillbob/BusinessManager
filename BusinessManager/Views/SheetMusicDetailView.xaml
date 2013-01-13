@@ -1,19 +1,27 @@
-﻿<UserControl x:Class="BusinessManager.Views.SheetMusicDetailView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-			 mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+﻿<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+	xmlns:Model="clr-namespace:BusinessManager.Model" 
+	xmlns:Controls="clr-namespace:BusinessManager.Controls"
+	x:Class="BusinessManager.Views.SheetMusicDetailView" 
+    d:DesignHeight="300" 
+	d:DesignWidth="300" 
+	mc:Ignorable="d">
+	<UserControl.Resources>
+		<Controls:IsSelectedColourConverter x:Key="IsSelectedColourConverter"/>
+	</UserControl.Resources>
 	<StackPanel>
-		<Label >Title:</Label>
-		<TextBox Text="{Binding Path=SheetMusic.Title}"></TextBox>
+		<Controls:LabeledTextBox Label="Title" Value="{Binding Path=SheetMusic.Title}"></Controls:LabeledTextBox>
+		<Controls:LabeledTextBox Label="Originals" Value="{Binding Path=SheetMusic.Originals}"></Controls:LabeledTextBox>
+		<Controls:LabeledTextBox Label="Copies" Value="{Binding Path=SheetMusic.Copies}"></Controls:LabeledTextBox>
 		<Label>Performers:</Label>
-		<ItemsControl ItemsSource="{Binding Path=SheetMusic.Artists}">
+		<ItemsControl ItemsSource="{Binding Path=Artists}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ArtistSelectedCommand}" CommandParameter="{Binding}">
+					<Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.PerformerSelectedCommand}" CommandParameter="{Binding}">
 						<Button.Template>
 							<ControlTemplate TargetType="Button">
 								<ContentPresenter />
@@ -43,7 +51,7 @@
 			</Button.Content>
 		</Button>
 		<Label>Composers:</Label>
-		<ItemsControl ItemsSource="{Binding SheetMusic.Composers}">
+		<ItemsControl ItemsSource="{Binding Composers}">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ComposerSelectedCommand}" CommandParameter="{Binding}">
@@ -76,12 +84,10 @@
 			</Button.Content>
 		</Button>
 		<Button Command="{Binding SaveCommand}">
-			<Button.Content>
-				<StackPanel>
-					<Image Source="/BusinessManager;component/Resources/Save.png" Width="64px"/>
-					<TextBlock>Save</TextBlock>
-				</StackPanel>
-			</Button.Content>
+			<StackPanel>
+				<Image Source="/BusinessManager;component/Resources/Save.png" Width="64px"/>
+				<TextBlock><Run Text="Save"/></TextBlock>
+			</StackPanel>
 		</Button>
 	</StackPanel>
 </UserControl>

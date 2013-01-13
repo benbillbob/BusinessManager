@@ -97,6 +97,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="100" />
           <Property Name="IsOriginal" Type="bit" Nullable="false" />
           <Property Name="Copies" Type="numeric" />
+          <Property Name="Originals" Type="numeric" />
         </EntityType>
         <EntityType Name="SheetMusicArtist">
           <Key>
@@ -476,6 +477,7 @@
           <Property Type="Decimal" Name="Copies" Precision="18" Scale="0" />
           <NavigationProperty Name="Artists" Relationship="BusinessManager.Model.SheetMusicArtist1" FromRole="SheetMusic" ToRole="Artist" />
           <NavigationProperty Name="Composers" Relationship="BusinessManager.Model.SheetMusicComposer" FromRole="SheetMusic" ToRole="Artist" />
+          <Property Type="Decimal" Name="Originals" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="SheetMusicArtist1">
           <End Type="BusinessManager.Model.Artist" Role="Artist" Multiplicity="*" />
@@ -584,6 +586,7 @@
           <EntitySetMapping Name="SheetMusics">
             <EntityTypeMapping TypeName="BusinessManager.Model.SheetMusic">
               <MappingFragment StoreEntitySet="SheetMusic">
+                <ScalarProperty Name="Originals" ColumnName="Originals" />
                 <ScalarProperty Name="Copies" ColumnName="Copies" />
                 <ScalarProperty Name="IsOriginal" ColumnName="IsOriginal" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

@@ -80,6 +80,18 @@ namespace BusinessManager.Model
     		} 
     	}
     
+    	private Nullable<decimal> originals;
+    
+        public Nullable<decimal> Originals 
+    	{ 
+    		get { return originals; } 
+    		set
+    		{
+    			originals = value;
+    			OnPropertyChanged("Originals");
+    		} 
+    	}
+    
     
         public virtual ICollection<Artist> Artists { get; set; }
         public virtual ICollection<Artist> Composers { get; set; }

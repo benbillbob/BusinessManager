@@ -17,7 +17,7 @@ namespace BusinessManager.Controls
 			set { SetValue(LabelProperty, value); }
 		}
 
-		public static readonly DependencyProperty LabelProperty = DependencyProperty.Register("Label", typeof(string), typeof(LabeledTextBox), new PropertyMetadata());
+		public static readonly DependencyProperty LabelProperty = DependencyProperty.Register("Label", typeof(string), typeof(LabeledTextBox), new FrameworkPropertyMetadata("", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 		public String Value
 		{
@@ -25,6 +25,6 @@ namespace BusinessManager.Controls
 			set { SetValue(ValueProperty, value); }
 		}
 
-		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(string), typeof(LabeledTextBox), new PropertyMetadata());
+		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(string), typeof(LabeledTextBox), new FrameworkPropertyMetadata("",FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 	}
 }
