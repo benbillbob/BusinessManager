@@ -20,6 +20,7 @@
 		</Grid.RowDefinitions>
 		<Label Grid.Row="0" Grid.Column="0">Choir:</Label>
 		<ComboBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Choirs}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedChoirId, Mode=TwoWay}"/>
+		<Button Grid.Row="4" Grid.Column="0" Command="{Binding ImportStudents}">vzsdff</Button>
 		<Button Grid.Row="4" Grid.Column="2" Command="{Binding StudentAddCommand}">
 			<Button.Content>
 				<StackPanel>

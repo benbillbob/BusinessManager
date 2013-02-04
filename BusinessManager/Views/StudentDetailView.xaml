@@ -9,7 +9,7 @@
              d:DesignHeight="800" d:DesignWidth="800">
 	<StackPanel>
 		<Label>FirstName:</Label>
-		<!--<TextBox Text="{Binding Path=Student.FirstName}"></TextBox>-->
+		<TextBox Text="{Binding Path=Student.FirstName}"></TextBox>
 		<Label>LastName:</Label>
 		<TextBox Text="{Binding Path=Student.LastName}"></TextBox>
 		<Label>Choir:</Label>
@@ -30,7 +30,6 @@
 		<TextBox Text="{Binding Path=Student.Postcode}"></TextBox>
 		<Label>City</Label>
 		<TextBox Text="{Binding Path=Student.City}"></TextBox>
-		<local:LabeledTextBox Label="Blah" Value="{Binding Path=Student.FirstName, Mode=TwoWay}" />
 		<Button Command="{Binding SaveCommand}">
 			<StackPanel>
 				<Image Source="/BusinessManager;component/Resources/Save.png" Width="64px"/>

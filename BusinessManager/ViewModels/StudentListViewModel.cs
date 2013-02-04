@@ -15,6 +15,7 @@ using BusinessManager.Model;
 using BusinessManager.Views;
 using Microsoft.Practices.Unity;
 using System.Windows.Data;
+using System.IO;
 
 namespace BusinessManager.ViewModels
 {
@@ -101,6 +102,17 @@ namespace BusinessManager.ViewModels
 			}
 		}
 
+		public ICommand ImportStudents
+		{
+			get
+			{
+				return new RelayCommand(s =>
+				{
+					importStudents();
+				});
+			}
+		}
+
 		List<Choir> choirs;
 
 		public List<Choir> Choirs
@@ -135,6 +147,40 @@ namespace BusinessManager.ViewModels
 					OnPropertyChanged("SelectedChoirId");
 				}
 			}
+		}
+
+		void importStudents()
+		{
+			var str = string.Empty;
+
+			using (var file = new FileStream("students.txt", FileMode.Open))
+			using (var stream = new StreamReader(file))
+			{
+				str = stream.ReadToEnd();
+			}
+
+			parseString(str);
+		}
+
+		void parseString(string str)
+		{
+			var fields = str.Split('|');
+
+			var fieldNum = 56;
+			var idx = 0;
+			while (idx < (fields.Length / fieldNum))
+			{
+				var rec = fields.Skip(idx).Take(fieldNum);
+				var student = createStudent(rec.ToArray());
+				idx += fieldNum;
+			}
+		}
+
+		Student createStudent(string[] rec)
+		{
+			var student = new Student();
+			student.FirstName = rec[3];
+			return student;
 		}
 	}
 }
